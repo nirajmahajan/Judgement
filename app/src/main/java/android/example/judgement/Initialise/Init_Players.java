@@ -1,0 +1,128 @@
+package android.example.judgement.Initialise;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.example.judgement.R;
+import android.example.judgement.database.AppDatabase;
+import android.example.judgement.database.Player;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Init_Players extends AppCompatActivity {
+
+    private ListView listView;
+    private ArrayList<String> names;
+    InitAdapter adapter;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_init__players);
+        Toolbar toolbar = findViewById(R.id.toolbar_init);
+        setSupportActionBar(toolbar);
+
+        listView = findViewById(R.id.lv_init_players);
+        names = new ArrayList<>();
+        if (AppDatabase.getAppDatabase(getApplicationContext()).dao().countPlayers() != 0) {
+            List<Player> initPlayers = AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers();
+            for (Player player: initPlayers) {
+                names.add(player.getName());
+            }
+        }
+
+        // make an adapter
+        adapter = new InitAdapter(this, names);
+
+        listView.setAdapter(adapter);
+     }
+
+    public void addPlayers(final View view) {
+        // create edit text for dialogbox
+        final EditText et_GetName = new EditText(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            et_GetName.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
+        }
+        final Context ctx = getApplicationContext();
+        final LayoutInflater inflater = this.getLayoutInflater();
+
+        et_GetName.setHint("Name");
+        new AlertDialog.Builder(this)
+                .setTitle("Add a Player")
+                .setMessage("Please Enter the Player's Name")
+                .setView(et_GetName)
+                .setCancelable(false)
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int initialCount = AppDatabase.getAppDatabase(ctx).dao().countPlayers();
+                        final String name = et_GetName.getText().toString();
+                        AppDatabase.verifiedAddPlayer(ctx, name);
+                        int finalCount = AppDatabase.getAppDatabase(ctx).dao().countPlayers();
+                        dialog.cancel();
+                        if(initialCount != finalCount) {
+                            names.add(name);
+                            adapter.notifyDataSetChanged();
+                        }
+                        dialog.cancel();
+
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                })
+                .show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Cannot go Back at this stage", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.init_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_about) {
+            /*TODO about*/
+        }
+        else if (id == R.id.menu_startGame) {
+            Intent intent = new Intent(this, Init_Dealer.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.int_menu_exit) {
+            AppDatabase.getAppDatabase(this).dao().purge();
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(0);
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+}
