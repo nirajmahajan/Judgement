@@ -58,7 +58,8 @@ public class TemplateActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.menu_about) {
-            /*TODO about*/
+            Intent intent = new Intent(getApplicationContext(), About.class);
+            startActivity(intent);
         }
         else if (id == R.id.menu_newGame) {
             final Activity context = this;

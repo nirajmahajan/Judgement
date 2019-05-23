@@ -108,11 +108,19 @@ public class Init_Players extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.menu_about) {
-            /*TODO about*/
+            Intent intent = new Intent(getApplicationContext(), About.class);
+            startActivity(intent);
         }
         else if (id == R.id.menu_startGame) {
-            Intent intent = new Intent(this, Init_Dealer.class);
-            startActivity(intent);
+            if (3 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
+                Toast.makeText(getApplicationContext(), "Need at least Three Players for the Game!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers().get(0).setDealer(true);
+                AppDatabase.normalizeIDs(getApplicationContext());
+                Intent intent = new Intent(this, Init_Dealer.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.int_menu_exit) {
             AppDatabase.getAppDatabase(this).dao().purge();

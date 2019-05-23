@@ -5,4 +5,5 @@
     <string name="title_activity_init__players">Init_Players</string>
     <string name="assemble">Players, Assemble!</string>
     <string name="resume">Resume</string>
+    <string name="choose_a_dealer">Choose a Dealer!</string>
 </resources>

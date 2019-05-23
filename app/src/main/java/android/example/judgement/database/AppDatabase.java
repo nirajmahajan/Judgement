@@ -6,6 +6,10 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 @Database(entities = {Player.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
@@ -111,5 +115,50 @@ public abstract class AppDatabase extends RoomDatabase {
 
             }
         }
+    }
+    
+    public static List<String> getAllNames(Context context){
+        List<Player> players = getAppDatabase(context).dao().getAllPlayers();
+        List<String> names = new ArrayList <String>();
+        for (Player player: players) {
+            names.add(player.getName());
+        }
+        return names;
+    }
+
+    public static void makeDealerByName(Context context, String name){
+        try{
+            Player dealer = getAppDatabase(context).dao().findDealer(true);
+            if (dealer.getName().equals(name)){
+                Toast.makeText(context, name + " is already the dealer!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                dealer.setDealer(false);
+                Player newDealer = getAppDatabase(context).dao().findByName(name);
+                newDealer.setDealer(true);
+                Toast.makeText(context, name + " is the new dealer!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        catch (Exception e) {
+            Player newDealer = getAppDatabase(context).dao().findByName(name);
+            newDealer.setDealer(true);
+            Toast.makeText(context, name + " is the new dealer!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+//    public Player getNext(Context context, Player player){
+//        AppDatabase db = getAppDatabase(context);
+//        int count = getAppDatabase()
+//    }
+
+    public static void normalizeIDs(Context context){
+        AppDatabase db = getAppDatabase(context);
+        List<Player> players = db.dao().getAllPlayers();
+        int count = players.size();
+        for(int i = 0; i < count; i++){
+            players.get(i).setId(i+1);
+        }
+        db.dao().purge();
+        db.dao().insertAll(players.toArray(new Player[count]));
     }
 }

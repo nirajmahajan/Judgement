@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Initialise.Init_Dealer"></activity>
+        <activity android:name=".Initialise.About"></activity>
+        <activity android:name=".Initialise.Init_Dealer" />
         <activity android:name=".Initialise.TemplateActivity" />
         <activity android:name=".Initialise.Resume_Page" />
         <activity
