@@ -95,11 +95,6 @@ public class game_edit_player extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Cannot go Back at this stage", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.game_edit_players, menu);
         return true;

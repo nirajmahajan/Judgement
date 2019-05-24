@@ -29,10 +29,6 @@ public class DealerEdit extends TemplateActivity {
         populateRadioGroup();
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Cannot go Back at this stage", Toast.LENGTH_SHORT).show();
-    }
 
     private void populateRadioGroup() {
         RadioGroup radioGroup = findViewById(R.id.rg_dealers);
