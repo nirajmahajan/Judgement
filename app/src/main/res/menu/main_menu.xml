@@ -4,7 +4,8 @@
     <item
         android:id="@+id/menu_newGame"
         android:title="New Game"
-        app:showAsAction="ifRoom" />
+        android:orderInCategory="299"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_about"

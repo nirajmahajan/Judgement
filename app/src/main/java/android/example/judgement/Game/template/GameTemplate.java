@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.example.judgement.Game.template.ScoreboardDisplay.ScoreboardDisplay;
+import android.example.judgement.Game.template.ScoreboardEdit.ScoreBoardEdit;
+import android.example.judgement.Game.template.editPlayer.game_edit_player;
 import android.example.judgement.Initialise.About;
 import android.example.judgement.Initialise.Init_Players;
-import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -118,7 +118,8 @@ public class GameTemplate extends AppCompatActivity
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
         } else if (id == R.id.game_menu_scorecard){
-            /*TODO scorecard*/
+            Intent intent = new Intent(getApplicationContext(), ScoreboardDisplay.class);
+            startActivity(intent);
         }
 
 
@@ -132,12 +133,17 @@ public class GameTemplate extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_scoreboard) {
-            /*TODO scoreboard*/
+            Intent intent = new Intent(getApplicationContext(), ScoreboardDisplay.class);
+            startActivity(intent);
         } else if (id == R.id.nav_player_edit_mode) {
             Intent intent = new Intent(getApplicationContext(), game_edit_player.class);
             startActivity(intent);
         } else if (id == R.id.nav_score_edit_mode) {
-            /*TODO score edit*/
+            Intent intent = new Intent(getApplicationContext(), ScoreBoardEdit.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_dealer_edit_mode) {
+            Intent intent = new Intent(getApplicationContext(), DealerEdit.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

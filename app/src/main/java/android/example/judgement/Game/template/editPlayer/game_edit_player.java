@@ -1,4 +1,4 @@
-package android.example.judgement.Game.template;
+package android.example.judgement.Game.template.editPlayer;
 
 import android.content.Context;
 import android.content.DialogInterface;

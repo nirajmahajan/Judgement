@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan"
-    tools:context=".Game.template.DealerEdit">
+    tools:context=".Initialise.Init_Dealer">
 
     <TextView
         android:id="@+id/tv_choose_dealer"
