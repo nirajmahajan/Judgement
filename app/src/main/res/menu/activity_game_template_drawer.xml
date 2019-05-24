@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_scoreboard"
+            android:icon="@drawable/scoreboard"
+            android:title="Scoreboard" />
+    </group>
+
+    <item
+        android:title="Edit Game Details">
+        <menu>
+            <item
+                android:id="@+id/nav_player_edit_mode"
+                android:icon="@drawable/edit"
+                android:title="Player Details"/>
+            <item
+                android:id="@+id/nav_score_edit_mode"
+                android:icon="@drawable/edit"
+                android:title="Edit Score" />
+        </menu>
+    </item>
+
+</menu>

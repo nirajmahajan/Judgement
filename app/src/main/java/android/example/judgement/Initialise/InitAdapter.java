@@ -24,7 +24,7 @@ public class InitAdapter extends ArrayAdapter {
     private final Activity context;
     ArrayList<String> names;
 
-    InitAdapter(Activity context, ArrayList<String> names) {
+    public InitAdapter(Activity context, ArrayList<String> names) {
         super(context, R.layout.init_object, names);
         this.names = names;
         this.context = context;

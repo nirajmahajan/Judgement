@@ -49,8 +49,13 @@ public class TemplateActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.game_menu, menu);
         return true;
+    }
+
+    public Toolbar getToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        return toolbar;
     }
 
     @Override

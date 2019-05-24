@@ -1,20 +1,16 @@
 package android.example.judgement.Initialise;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.example.judgement.Game.template.GameTemplate;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,8 +22,6 @@ public class Init_Dealer extends TemplateActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init__dealer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         populateRadioGroup();
         askForStart();
     }
@@ -70,7 +64,8 @@ public class Init_Dealer extends TemplateActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         AppDatabase.makeDealerByName(getApplicationContext(), name);
                         dialog.cancel();
-                        /*TODO proceed to game menu*/
+                        Intent intent = new Intent(getApplicationContext(), GameTemplate.class);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

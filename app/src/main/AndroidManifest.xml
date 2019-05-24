@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Initialise.About"></activity>
+        <activity android:name=".Game.template.game_edit_player"></activity>
+        <activity
+            android:name=".Game.template.GameTemplate"
+            android:label="@string/title_activity_game_template"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+        <activity android:name=".Initialise.About" />
         <activity android:name=".Initialise.Init_Dealer" />
         <activity android:name=".Initialise.TemplateActivity" />
         <activity android:name=".Initialise.Resume_Page" />
