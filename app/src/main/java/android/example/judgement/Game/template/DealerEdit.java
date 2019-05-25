@@ -58,26 +58,36 @@ public class DealerEdit extends TemplateActivity {
     };
 
     public void makeDealerAndGo(View v) {
-        final String name = selectedRadio.getText().toString();
-        new AlertDialog.Builder(DealerEdit.this)
-                .setTitle("Confirm Dealer")
-                .setMessage("Do you wish to make " + name + " the dealer?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AppDatabase.makeDealerByName(getApplicationContext(), name);
-                        dialog.cancel();
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                })
-                .show();
+        if (selectedRadio == null) {
+            Toast.makeText(getApplicationContext(), "Select a Player First", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            final String name = selectedRadio.getText().toString();
+            new AlertDialog.Builder(DealerEdit.this)
+                    .setTitle("Confirm Dealer")
+                    .setMessage("Do you wish to make " + name + " the dealer?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AppDatabase.makeDealerByName(getApplicationContext(), name);
+                            dialog.cancel();
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Cannot go Back at this stage", Toast.LENGTH_SHORT).show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

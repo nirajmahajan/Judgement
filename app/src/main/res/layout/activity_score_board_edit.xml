@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan"
-    tools:context=".Game.template.editPlayer.game_edit_player">
+    tools:context=".Game.template.ScoreboardEdit.ScoreBoardEdit">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cl_sce_header"

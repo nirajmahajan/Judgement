@@ -1,5 +1,6 @@
 package android.example.judgement.database;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
@@ -134,21 +135,43 @@ public abstract class AppDatabase extends RoomDatabase {
             else {
                 dealer.setDealer(false);
                 Player newDealer = getAppDatabase(context).dao().findByName(name);
+                getAppDatabase(context).dao().delete(newDealer, dealer);
                 newDealer.setDealer(true);
+                getAppDatabase(context).dao().insertAll(dealer, newDealer);
                 Toast.makeText(context, name + " is the new dealer!", Toast.LENGTH_SHORT).show();
             }
         }
         catch (Exception e) {
             Player newDealer = getAppDatabase(context).dao().findByName(name);
+            getAppDatabase(context).dao().delete(newDealer);
             newDealer.setDealer(true);
+            getAppDatabase(context).dao().insertAll(newDealer);
             Toast.makeText(context, name + " is the new dealer!", Toast.LENGTH_SHORT).show();
         }
     }
 
-//    public Player getNext(Context context, Player player){
-//        AppDatabase db = getAppDatabase(context);
-//        int count = getAppDatabase()
-//    }
+    public static Player nextPlayer(Context context, Player player){
+        AppDatabase db = getAppDatabase(context);
+        int count = db.dao().countPlayers();
+        int old_id = player.getId();
+        if (old_id == count) {
+            return db.dao().findById(1);
+        }
+        else {
+            return db.dao().findById(old_id + 1);
+        }
+    }
+    public static Player previousPlayer(Context context, Player player){
+        AppDatabase db = getAppDatabase(context);
+        int count = db.dao().countPlayers();
+        int old_id = player.getId();
+        if (old_id == 1) {
+            return db.dao().findById(count);
+        }
+        else {
+            return db.dao().findById(old_id - 1);
+        }
+    }
 
     public static void normalizeIDs(Context context){
         AppDatabase db = getAppDatabase(context);
@@ -156,6 +179,70 @@ public abstract class AppDatabase extends RoomDatabase {
         int count = players.size();
         for(int i = 0; i < count; i++){
             players.get(i).setId(i+1);
+        }
+        db.dao().purge();
+        db.dao().insertAll(players.toArray(new Player[count]));
+    }
+
+    public static void addPrediction(Context context, String playerName, int prediction){
+        AppDatabase db = getAppDatabase(context);
+        Player player = db.dao().findByName(playerName);
+        db.dao().delete(player);
+        player.setPrediction(prediction);
+        db.dao().insertAll(player);
+    }
+
+    public static void addResult(Context context, String playerName, boolean result){
+        AppDatabase db = getAppDatabase(context);
+        Player player = db.dao().findByName(playerName);
+        db.dao().delete(player);
+        player.setResult(result);
+        db.dao().insertAll(player);
+    }
+
+    public static void addAllScores(Context context){
+        AppDatabase db = getAppDatabase(context);
+        List<Player> players = db.dao().getAllPlayers();
+        int count = players.size();
+        for(int i = 0; i < count; i++){
+            boolean result = players.get(i).getResult();
+            int prediction = players.get(i).getPrediction();
+            if(result){
+                players.get(i).addScore(10 + prediction);
+            }
+        }
+        db.dao().purge();
+        db.dao().insertAll(players.toArray(new Player[count]));
+    }
+
+    public static void setAllPredictionsToReset(Context context){
+        AppDatabase db = getAppDatabase(context);
+        List<Player> players = db.dao().getAllPlayers();
+        int count = players.size();
+        for(int i = 0; i < count; i++){
+            players.get(i).setPrediction(-1);
+        }
+        db.dao().purge();
+        db.dao().insertAll(players.toArray(new Player[count]));
+    }
+
+    public static void setAllResultsToFalse(Context context) {
+        AppDatabase db = getAppDatabase(context);
+        List<Player> players = db.dao().getAllPlayers();
+        int count = players.size();
+        for(int i = 0; i < count; i++){
+            players.get(i).setResult(false);
+        }
+        db.dao().purge();
+        db.dao().insertAll(players.toArray(new Player[count]));
+    }
+
+    public static void setAllScoresToZero(Context context) {
+        AppDatabase db = getAppDatabase(context);
+        List<Player> players = db.dao().getAllPlayers();
+        int count = players.size();
+        for(int i = 0; i < count; i++){
+            players.get(i).setScore(0);
         }
         db.dao().purge();
         db.dao().insertAll(players.toArray(new Player[count]));

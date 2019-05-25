@@ -3,7 +3,8 @@ package android.example.judgement.Initialise;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.example.judgement.Game.template.GameTemplate;
+import android.example.judgement.Game.PlayGame;
+import android.example.judgement.Game.ShowFinalScore.DisplayFinalScore;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import java.util.List;
 public class Init_Dealer extends TemplateActivity {
 
     boolean startFrom0 = true;
-    RadioButton selectedRadio;
+    RadioButton selectedRadio = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,27 +61,33 @@ public class Init_Dealer extends TemplateActivity {
     };
 
     public void makeDealerAndGo(View v) {
-        final String name = selectedRadio.getText().toString();
-        new AlertDialog.Builder(Init_Dealer.this)
-                .setTitle("Confirm Dealer")
-                .setMessage("Do you wish to make " + name + " the dealer?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AppDatabase.makeDealerByName(getApplicationContext(), name);
-                        dialog.cancel();
-                        Intent intent = new Intent(getApplicationContext(), GameTemplate.class);
-                        startActivity(intent);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                })
-                .show();
+        if (selectedRadio == null) {
+            Toast.makeText(getApplicationContext(), "Select a Player First", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            final String name = selectedRadio.getText().toString();
+            new AlertDialog.Builder(Init_Dealer.this)
+                    .setTitle("Confirm Dealer")
+                    .setMessage("Do you wish to make " + name + " the dealer?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AppDatabase.makeDealerByName(getApplicationContext(), name);
+                            dialog.cancel();
+                            Intent intent = new Intent(getApplicationContext(), PlayGame.class);
+                            intent.putExtra("START_FROM_0", startFrom0);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        }
     }
 
     private void askForStart() {

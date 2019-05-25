@@ -3,7 +3,9 @@ package android.example.judgement.Game.template.editPlayer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.example.judgement.Game.template.DealerEdit;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
@@ -72,26 +74,54 @@ public class InitAdapter extends ArrayAdapter {
                 TextView txt = ll.findViewById(R.id.tv_ep_init_name);
                 final String name = txt.getText().toString();
 
-                new AlertDialog.Builder(context)
-                        .setTitle("Confirm Deletion")
-                        .setMessage("Do you want to remove "+ name + " from the game?\n(This cannot be reversed)")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Player player = AppDatabase.getAppDatabase(context).dao().findByName(name);
-                                AppDatabase.getAppDatabase(context).dao().delete(player);
-                                names.remove(name);
-                                AppDatabase.normalizeIDs(context);
-                                notifyDataSetChanged();
-                                dialog.cancel();
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {}
-                        })
-                        .show();
+                if (AppDatabase.getAppDatabase(context).dao().findDealer(true).getName().equals(name)) {
+                    new AlertDialog.Builder(context)
+                            .setTitle("Confirm Deleting the Dealer")
+                            .setMessage("Do you want to remove " + name +", the current dealer, from the game?\n(This cannot be reversed)")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Player player = AppDatabase.getAppDatabase(context).dao().findByName(name);
+                                    AppDatabase.getAppDatabase(context).dao().delete(player);
+                                    names.remove(name);
+                                    AppDatabase.normalizeIDs(context);
+                                    notifyDataSetChanged();
+                                    Intent intent = new Intent(context, DealerEdit.class);
+                                    context.startActivity(intent);
+                                    dialog.cancel();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .show();
+                }
+                else {
+                    new AlertDialog.Builder(context)
+                            .setTitle("Confirm Deletion")
+                            .setMessage("Do you want to remove " + name + " from the game?\n(This cannot be reversed)")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Player player = AppDatabase.getAppDatabase(context).dao().findByName(name);
+                                    AppDatabase.getAppDatabase(context).dao().delete(player);
+                                    names.remove(name);
+                                    AppDatabase.normalizeIDs(context);
+                                    notifyDataSetChanged();
+                                    dialog.cancel();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .show();
+                }
             }
         });
 

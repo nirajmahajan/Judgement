@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Game.template.DealerEdit"></activity>
+        <activity android:name=".Game.TakeResults" />
+        <activity android:name=".Game.TakeHands.TakeHands" />
+        <activity android:name=".Game.PlayGame" />
+        <activity android:name=".Game.ShowFinalScore.DisplayFinalScore" />
+        <activity android:name=".Game.template.DealerEdit" />
         <activity android:name=".Game.template.ScoreboardEdit.ScoreBoardEdit" />
         <activity android:name=".Game.template.ScoreboardDisplay.ScoreboardDisplay" />
         <activity android:name=".Game.template.editPlayer.game_edit_player" />

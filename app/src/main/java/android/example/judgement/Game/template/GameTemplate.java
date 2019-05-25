@@ -28,6 +28,11 @@ import android.widget.FrameLayout;
 public class GameTemplate extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Toolbar toolbar;
+    DrawerLayout fullView;
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,20 +41,20 @@ public class GameTemplate extends AppCompatActivity
     @Override
     public void setContentView(int layoutResID)
     {
-        DrawerLayout fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_game_template, null);
+        fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_game_template, null);
         FrameLayout activityContainer = (FrameLayout) fullView.findViewById(R.id.game_template_activity_content);
         getLayoutInflater().inflate(layoutResID, activityContainer, true);
         super.setContentView(fullView);
 
 
-        Toolbar toolbar = findViewById(R.id.game_toolbar);
+        toolbar = findViewById(R.id.game_toolbar);
         setSupportActionBar(toolbar);
         setTitle("Judgement");
         toolbar.setTitleTextColor(Color.WHITE);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         if (useDrawer())
         {
@@ -66,6 +71,23 @@ public class GameTemplate extends AppCompatActivity
         return true;
     }
 
+    public void setToolbarTitle (String title) {
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        if (useDrawer())
+        {
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+            navigationView.setNavigationItemSelectedListener(this);
+        }
+        else
+        {
+            drawer.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     public void onBackPressed() {

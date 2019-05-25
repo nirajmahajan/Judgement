@@ -14,10 +14,17 @@ public class Player {
     private String name;
 
     @ColumnInfo(name = "Score")
-    private int score;
+    private int score = 0;
 
     @ColumnInfo(name = "dealer")
     private boolean dealer;
+
+    @ColumnInfo(name = "Prediction")
+    private int prediction = -1;
+
+    // Result of Current Round
+    @ColumnInfo(name = "Result")
+    private boolean result = false;
 
     public int getId() {
         return id;
@@ -37,10 +44,15 @@ public class Player {
     public void setScore(int score) {
         this.score = score;
     }
+    public void addScore(int toAdd) {this.score += toAdd;}
     public boolean getDealer() {
         return dealer;
     }
     public void setDealer(boolean status) {
         this.dealer = status;
     }
+    public int getPrediction() {return prediction;}
+    public void setPrediction(int prediction) {this.prediction = prediction;}
+    public boolean getResult() {return result;}
+    public void setResult(boolean result) {this.result = result;}
 }
