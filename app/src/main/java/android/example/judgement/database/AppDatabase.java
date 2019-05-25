@@ -192,6 +192,14 @@ public abstract class AppDatabase extends RoomDatabase {
         db.dao().insertAll(player);
     }
 
+    public static void addCement(Context context, String playerName, boolean cement){
+        AppDatabase db = getAppDatabase(context);
+        Player player = db.dao().findByName(playerName);
+        db.dao().delete(player);
+        player.setCement(cement);
+        db.dao().insertAll(player);
+    }
+
     public static void addResult(Context context, String playerName, boolean result){
         AppDatabase db = getAppDatabase(context);
         Player player = db.dao().findByName(playerName);
@@ -221,6 +229,7 @@ public abstract class AppDatabase extends RoomDatabase {
         int count = players.size();
         for(int i = 0; i < count; i++){
             players.get(i).setPrediction(-1);
+            players.get(i).setCement(false);
         }
         db.dao().purge();
         db.dao().insertAll(players.toArray(new Player[count]));

@@ -35,6 +35,8 @@
         android:layout_marginRight="15dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_weight="1"
+        android:tint="@android:color/holo_red_dark"
+        android:backgroundTint="@color/cyan"
         app:srcCompat="@drawable/delete"
         tools:ignore="VectorDrawableCompat" />
 
@@ -44,7 +46,8 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_height="25dp"
         android:layout_weight="1"
-        android:tint="@color/FullBlack"
+        android:backgroundTint="@color/cyan"
+        android:tint="@color/DarkBlue"
         app:srcCompat="@drawable/edit"
         tools:ignore="VectorDrawableCompat" />
 

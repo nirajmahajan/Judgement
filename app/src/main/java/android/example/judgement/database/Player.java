@@ -22,6 +22,10 @@ public class Player {
     @ColumnInfo(name = "Prediction")
     private int prediction = -1;
 
+    // to cement a prediction
+    @ColumnInfo(name = "Cement")
+    private boolean cement = false;
+
     // Result of Current Round
     @ColumnInfo(name = "Result")
     private boolean result = false;
@@ -53,6 +57,8 @@ public class Player {
     }
     public int getPrediction() {return prediction;}
     public void setPrediction(int prediction) {this.prediction = prediction;}
+    public boolean getCement() {return cement;}
+    public void setCement(boolean cement) {this.cement = cement;}
     public boolean getResult() {return result;}
     public void setResult(boolean result) {this.result = result;}
 }

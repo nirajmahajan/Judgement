@@ -91,7 +91,7 @@ public class DealerEdit extends TemplateActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.game_edit_players, menu);
+        getMenuInflater().inflate(R.menu.about_only, menu);
         return true;
     }
 
@@ -99,25 +99,10 @@ public class DealerEdit extends TemplateActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.game_ep_menu_about) {
+        if (id == R.id.game_menu_about) {
             Intent intent = new Intent(getApplicationContext(), About.class);
             startActivity(intent);
         }
-        else if (id == R.id.game_ep_menu_done) {
-            if (3 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
-                Toast.makeText(getApplicationContext(), "Need at least Three Players for the Game!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                finish();
-            }
-        }
-        else if (id == R.id.game_ep_int_menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
-        }
-
 
         return super.onOptionsItemSelected(item);
     }

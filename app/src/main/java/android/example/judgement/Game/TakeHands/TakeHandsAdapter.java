@@ -50,12 +50,17 @@ public class TakeHandsAdapter extends ArrayAdapter {
         Player next = AppDatabase.nextPlayer(context, player);
         Player previous = AppDatabase.previousPlayer(context, player);
         final boolean dealer = player.getDealer();
-
+        if (next.getPrediction() != -1 && player.getPrediction() != -1){
+            AppDatabase.addCement(context, player.getName(), true);
+        }
         if(dealer) {
             rowView.setBackgroundColor(R.color.lightCobalt);
         }
         if (allEntered()) {
             fab.setVisibility(View.VISIBLE);
+        }
+        else {
+            fab.setVisibility(View.INVISIBLE);
         }
 
         tv_id.setText(String.valueOf(position + 1));
@@ -106,7 +111,7 @@ public class TakeHandsAdapter extends ArrayAdapter {
         }
         else if (dealer) {
             et_hands.setVisibility(View.INVISIBLE);
-            b_edit.setVisibility(View.INVISIBLE);
+            b_edit.setVisibility(View.VISIBLE);
             b_set.setVisibility(View.INVISIBLE);
             tv_hands.setVisibility(View.VISIBLE);
         }
@@ -117,6 +122,12 @@ public class TakeHandsAdapter extends ArrayAdapter {
             tv_hands.setVisibility(View.VISIBLE);
         }
         else {
+            et_hands.setVisibility(View.INVISIBLE);
+            b_edit.setVisibility(View.INVISIBLE);
+            b_set.setVisibility(View.INVISIBLE);
+            tv_hands.setVisibility(View.VISIBLE);
+        }
+        if (player.getCement() && !dealer) {
             et_hands.setVisibility(View.INVISIBLE);
             b_edit.setVisibility(View.INVISIBLE);
             b_set.setVisibility(View.INVISIBLE);

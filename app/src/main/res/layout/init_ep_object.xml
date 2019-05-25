@@ -59,6 +59,7 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="@color/cyan"
         android:layout_weight="1"
+        android:tint="@android:color/holo_red_dark"
         app:srcCompat="@drawable/delete"
         tools:ignore="VectorDrawableCompat" />
 
@@ -69,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/cyan"
-        android:tint="@color/FullBlack"
+        android:tint="@color/DarkBlue"
         app:srcCompat="@drawable/edit"
         tools:ignore="VectorDrawableCompat" />
 
