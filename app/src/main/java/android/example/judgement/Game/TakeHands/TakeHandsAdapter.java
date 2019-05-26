@@ -1,5 +1,6 @@
 package android.example.judgement.Game.TakeHands;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
@@ -35,6 +36,7 @@ public class TakeHandsAdapter extends ArrayAdapter {
         this.fab = fab;
     }
 
+    @SuppressLint({"RestrictedApi", "ResourceAsColor"})
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.take_hands_object, null, true);

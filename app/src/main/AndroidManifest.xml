@@ -11,32 +11,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Game.TakeResults" />
-        <activity android:name=".Game.TakeHands.TakeHands" />
-        <activity android:name=".Game.PlayGame" />
-        <activity android:name=".Game.ShowFinalScore.DisplayFinalScore" />
-        <activity android:name=".Game.template.DealerEdit" />
-        <activity android:name=".Game.template.ScoreboardEdit.ScoreBoardEdit" />
-        <activity android:name=".Game.template.ScoreboardDisplay.ScoreboardDisplay" />
-        <activity android:name=".Game.template.editPlayer.game_edit_player" />
+        <activity android:name=".Game.TakeResults.TakeResults" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.TakeHands.TakeHands" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.PlayGame" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.ShowFinalScore.DisplayFinalScore" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.template.DealerEdit" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.template.ScoreboardEdit.ScoreBoardEdit" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.template.ScoreboardDisplay.ScoreboardDisplay" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.template.editPlayer.game_edit_player" android:screenOrientation="portrait"/>
         <activity
             android:name=".Game.template.GameTemplate"
             android:label="@string/title_activity_game_template"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
-        <activity android:name=".Initialise.About" />
-        <activity android:name=".Initialise.Init_Dealer" />
-        <activity android:name=".Initialise.TemplateActivity" />
-        <activity android:name=".Initialise.Resume_Page" />
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Initialise.About" android:screenOrientation="portrait"/>
+        <activity android:name=".Initialise.Init_Dealer" android:screenOrientation="portrait"/>
+        <activity android:name=".Initialise.TemplateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Initialise.Resume_Page" android:screenOrientation="portrait"/>
         <activity
             android:name=".Initialise.Init_Players"
             android:label="@string/title_activity_init__players"
             android:parentActivityName=".Initialise.MainActivity"
-            tools:targetApi="jelly_bean">
+            tools:targetApi="jelly_bean"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.example.judgement.Initialise.MainActivity" />
         </activity>
-        <activity android:name=".Initialise.MainActivity">
+        <activity android:name=".Initialise.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        AppDatabase.getAppDatabase(getApplicationContext()).dao().purge();
-        AppDatabase.destroyInstance();
+//        AppDatabase.getAppDatabase(getApplicationContext()).dao().purge();
+//        AppDatabase.destroyInstance();
         super.onDestroy();
     }
 

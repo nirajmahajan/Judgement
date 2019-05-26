@@ -2,13 +2,12 @@ package android.example.judgement.Game.TakeHands;
 
 import android.content.Intent;
 import android.example.judgement.Game.ShowFinalScore.DisplayFinalScore;
-import android.example.judgement.Game.TakeResults;
+import android.example.judgement.Game.TakeResults.TakeResults;
 import android.example.judgement.Game.template.GameTemplate;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;

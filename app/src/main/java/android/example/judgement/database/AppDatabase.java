@@ -64,17 +64,14 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     }
 
-    public static void makeDealer(Context ctx, Player player) {
+    public static void moveDealer(Context ctx) {
         AppDatabase db = getAppDatabase(ctx);
-        Player prev_dealer = db.dao().findDealer(true);
+        Player dealer = db.dao().findDealer(true);
+        Player player = nextPlayer(ctx, dealer);
+        AppDatabase.getAppDatabase(ctx).dao().delete(player, dealer);
         player.setDealer(true);
-        prev_dealer.setDealer(false);
-    }
-
-    public static void swapPlayers(Player player1, Player player2) {
-        int id1 = player1.getId();
-        player1.setId(player2.getId());
-        player2.setId(id1);
+        dealer.setDealer(false);
+        AppDatabase.getAppDatabase(ctx).dao().insertAll(player, dealer);
     }
 
     public static void verifiedRename(Context ctx, Player player,String Name) {
@@ -215,7 +212,7 @@ public abstract class AppDatabase extends RoomDatabase {
         for(int i = 0; i < count; i++){
             boolean result = players.get(i).getResult();
             int prediction = players.get(i).getPrediction();
-            if(result){
+            if(result && prediction != -1){
                 players.get(i).addScore(10 + prediction);
             }
         }
