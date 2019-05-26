@@ -27,7 +27,6 @@
         <activity android:name=".Initialise.About" android:screenOrientation="portrait"/>
         <activity android:name=".Initialise.Init_Dealer" android:screenOrientation="portrait"/>
         <activity android:name=".Initialise.TemplateActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Initialise.Resume_Page" android:screenOrientation="portrait"/>
         <activity
             android:name=".Initialise.Init_Players"
             android:label="@string/title_activity_init__players"

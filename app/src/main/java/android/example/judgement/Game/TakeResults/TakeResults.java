@@ -32,6 +32,7 @@ public class TakeResults extends GameTemplate {
     private int count;
     private int round;
     private boolean startFrom0;
+    private int truth_count;
     FloatingActionButton fab;
 
     @Override
@@ -87,15 +88,34 @@ public class TakeResults extends GameTemplate {
                 }
             }
 
-            startAppropriateActivity();
+            if (checkSumOfAllWinners()){
+                startAppropriateActivity();
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "The sum of hands of all winners exceeds the number of cards dealt!", Toast.LENGTH_LONG).show();
+            }
+        }
+        else if (truth_count == count) {
+            Toast.makeText(getApplicationContext(), "All players cannot win!", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(getApplicationContext(), "Please input all data before proceeding!", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private boolean checkSumOfAllWinners() {
+        List<Player> players = AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers();
+        int counter = 0;
+        for (Player player : players) {
+            if(player.getResult()) {
+                counter += player.getPrediction();
+            }
+        }
+        return (counter <= round);
+    }
+
     private boolean allFilled() {
-        int true_count = 0;
+        truth_count = 0;
         for (int i = 0; i < count; i++){
             ConstraintLayout cl = listView.findViewById(i);
             RadioGroup rg = cl.findViewById(R.id.rg_take_res_result);
@@ -106,11 +126,11 @@ public class TakeResults extends GameTemplate {
                 return false;
             }
             else if (radio_yes.isChecked()){
-                true_count++;
+                truth_count++;
             }
         }
 
-        if (true_count == count) {
+        if (truth_count == count) {
             Toast.makeText(getApplicationContext(), "All players cannot win!", Toast.LENGTH_LONG).show();
             return false;
         } else {

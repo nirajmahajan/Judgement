@@ -97,7 +97,7 @@ public class Init_Dealer extends TemplateActivity {
                 .setTitle("How do you wish to start")
                 .setMessage("Do you wish to start dealing from 1 or " + String.valueOf(end) + " ?")
                 .setCancelable(false)
-                .setPositiveButton("Start from '0'", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Start from '1'", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startFrom0 = true;

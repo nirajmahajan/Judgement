@@ -139,7 +139,7 @@ public class TakeHandsAdapter extends ArrayAdapter {
         b_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et_hands.getText().toString().equals("")) {
+                if (!isValidInteger(et_hands.getText().toString()) || et_hands.getText().toString().equals("")) {
                     Toast.makeText(context, "Please provide a valid number", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -186,5 +186,15 @@ public class TakeHandsAdapter extends ArrayAdapter {
             all_filled = all_filled && (AppDatabase.getAppDatabase(context).dao().findByName(name).getPrediction() != -1);
         }
         return  all_filled;
+    }
+
+    private  boolean isValidInteger  (String str){
+        try{
+            int num = Integer.parseInt(str);
+            return num >= 0 && num <= round;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

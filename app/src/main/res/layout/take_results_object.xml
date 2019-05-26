@@ -15,6 +15,7 @@
         android:textSize="30sp"
         android:gravity="center|center_vertical"
         android:layout_height="match_parent"
+        android:textColor="@color/FullBlack"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|left"
+            android:textColor="@color/FullBlack"
             android:buttonTint="@color/GoButton"
             android:textSize="20sp"
             android:text="Yes"/>
@@ -58,6 +60,7 @@
             android:id="@+id/radio_no"
             android:layout_width="match_parent"
             android:textSize="20sp"
+            android:textColor="@color/FullBlack"
             android:layout_height="wrap_content"
             android:buttonTint="@android:color/holo_red_dark"
             android:gravity="center_vertical|left"
