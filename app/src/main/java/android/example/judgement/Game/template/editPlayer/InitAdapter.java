@@ -11,6 +11,7 @@ import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,13 +65,13 @@ public class InitAdapter extends ArrayAdapter {
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editListen((LinearLayout) edit_button.getParent());
+                editListen((ConstraintLayout) edit_button.getParent());
             }
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout ll = (LinearLayout) delete_button.getParent();
+                ConstraintLayout ll = (ConstraintLayout) delete_button.getParent();
                 TextView txt = ll.findViewById(R.id.tv_ep_init_name);
                 final String name = txt.getText().toString();
 
@@ -129,7 +130,7 @@ public class InitAdapter extends ArrayAdapter {
     }
 
 
-    private void editListen(LinearLayout v) {
+    private void editListen(ConstraintLayout v) {
         final EditText et_GetName = new EditText(context);
         et_GetName.setHint("Name");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -138,6 +139,7 @@ public class InitAdapter extends ArrayAdapter {
         // get the text views inside the view clicked
         TextView textView_id = v.findViewById(R.id.tv_ep_id_init);
         final TextView textView_name = v.findViewById(R.id.tv_ep_init_name);
+        et_GetName.setText(textView_name.getText().toString());
         final int old_id =  Integer.valueOf(textView_id.getText().toString());
         // create a new dialogue to get new name
         new AlertDialog.Builder(context)
@@ -169,7 +171,7 @@ public class InitAdapter extends ArrayAdapter {
 
     private void moveUp(View view) {
         LinearLayout vertical = (LinearLayout) view.getParent();
-        LinearLayout ll = (LinearLayout) vertical.getParent();
+        ConstraintLayout ll = (ConstraintLayout) vertical.getParent();
         TextView textView = (TextView) ll.findViewById(R.id.tv_ep_init_name);
         String name = textView.getText().toString();
         AppDatabase db = AppDatabase.getAppDatabase(context);
@@ -199,7 +201,7 @@ public class InitAdapter extends ArrayAdapter {
 
     private void moveDown(View view) {
         LinearLayout vertical = (LinearLayout) view.getParent();
-        LinearLayout ll = (LinearLayout) vertical.getParent();
+        ConstraintLayout ll = (ConstraintLayout) vertical.getParent();
         TextView textView = (TextView) ll.findViewById(R.id.tv_ep_init_name);
         String name = textView.getText().toString();
         AppDatabase db = AppDatabase.getAppDatabase(context);

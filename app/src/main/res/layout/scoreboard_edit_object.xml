@@ -52,7 +52,7 @@
         android:layout_weight="1"
         android:tint="@color/DarkBlue"
         app:srcCompat="@drawable/edit"
-        android:backgroundTint="@color/cyan"
+        android:backgroundTint="@color/lightCobalt"
         tools:ignore="VectorDrawableCompat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
