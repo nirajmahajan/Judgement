@@ -12,7 +12,9 @@
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Game.TakeResults.TakeResults" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.TakeHands.TakeHands" android:screenOrientation="portrait"/>
+        <activity android:name=".Game.TakeHands.TakeHands"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|adjustPan"/>
         <activity android:name=".Game.PlayGame" android:screenOrientation="portrait"/>
         <activity android:name=".Game.ShowFinalScore.DisplayFinalScore" android:screenOrientation="portrait"/>
         <activity android:name=".Game.template.DealerEdit" android:screenOrientation="portrait"/>
