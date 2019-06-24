@@ -10,8 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    RadioGroup rg_main;
+    RadioButton rb_custom;
+    RadioButton rb_fixed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Judgement");
         toolbar.setTitleTextColor(Color.WHITE);
+        rg_main = findViewById(R.id.rg_main);
+        rb_custom = findViewById(R.id.rb_main_custom_trump);
+        rb_fixed = findViewById(R.id.rb_main_fixed_trump);
     }
 
     @Override
@@ -32,8 +43,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToPlayerInit(View view) {
-        Intent intent = new Intent(this.getApplicationContext(), Init_Players.class);
-        startActivity(intent);
+        if (!rb_fixed.isChecked() && !rb_custom.isChecked()) {
+            Toast.makeText(getApplicationContext(), "Please select a mode", Toast.LENGTH_LONG).show();
+        } else {
+            String mode;
+            if(rb_fixed.isChecked()) {
+                mode = "FIXED";
+            }
+            else {
+                mode = "CUSTOM";
+            }
+
+            Intent intent = new Intent(this.getApplicationContext(), Init_Players.class);
+            intent.putExtra("MODE", mode);
+            startActivity(intent);
+        }
     }
 
     @Override

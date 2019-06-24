@@ -44,15 +44,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/im_welcom" />
 
+    <TextView
+        android:id="@+id/tv_main_choose_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please select a mode"
+        android:textColor="@color/FullBlack"
+        android:textSize="25sp"
+        app:layout_constraintVertical_bias="0.3"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+        app:layout_constraintBottom_toTopOf="@id/b_welcome_go"
+        android:gravity="left|center_vertical"/>
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/cyan"
+        app:layout_constraintStart_toStartOf="@id/tv_main_choose_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_main_choose_title">
+
+        <RadioButton
+            android:id="@+id/rb_main_fixed_trump"
+            android:text="Fixed Trumps"
+            android:textSize="20sp"
+            android:buttonTint="@color/DarkBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_main_custom_trump"
+            android:text="Custom Trumps"
+            android:textSize="20sp"
+            android:buttonTint="@color/DarkBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
     <Button
         android:id="@+id/b_welcome_go"
-        android:layout_width="127dp"
-        android:layout_height="87dp"
+        android:layout_width="107dp"
+        android:layout_height="67dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/GoButton"
         android:text="@string/go"
         android:textColor="@color/FullWhite"
@@ -60,5 +103,5 @@
         android:onClick="goToPlayerInit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 </android.support.constraint.ConstraintLayout>

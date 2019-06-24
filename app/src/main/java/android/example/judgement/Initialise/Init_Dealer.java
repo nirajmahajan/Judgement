@@ -18,6 +18,8 @@ import java.util.List;
 
 public class Init_Dealer extends TemplateActivity {
 
+    String mode;
+
     boolean startFrom0 = true;
     RadioButton selectedRadio = null;
     @Override
@@ -25,6 +27,7 @@ public class Init_Dealer extends TemplateActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init__dealer);
         populateRadioGroup();
+        mode = getIntent().getStringExtra("MODE");
         askForStart();
     }
 
@@ -77,6 +80,7 @@ public class Init_Dealer extends TemplateActivity {
                             dialog.cancel();
                             Intent intent = new Intent(getApplicationContext(), PlayGame.class);
                             intent.putExtra("START_FROM_0", startFrom0);
+                            intent.putExtra("MODE", mode);
                             startActivity(intent);
                         }
                     })

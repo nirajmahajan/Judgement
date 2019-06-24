@@ -9,7 +9,10 @@ import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +30,16 @@ public class TakeHands extends GameTemplate {
     private int round;
     private boolean startFrom0;
     FloatingActionButton fab;
+    String mode;
+    int step;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_hands);
 
+        step = getIntent().getExtras().getInt("STEP");
+        mode = getIntent().getStringExtra("MODE");
         setToolbarTitle("Taking Hands");
         Intent intent = getIntent();
         round = intent.getExtras().getInt("ROUND_NUMBER");
@@ -44,6 +51,14 @@ public class TakeHands extends GameTemplate {
         else {
             title.setText("Distribute " + round + " cards each");
         }
+
+        if (mode.equals("FIXED")) {
+            title.setGravity(Gravity.LEFT);
+            title.setTextSize(25);
+            title.append("\nCurrent Trump is " + getTrump());
+        }
+
+
 
         fab = findViewById(R.id.fab_take_go);
         fab.setVisibility(View.INVISIBLE);
@@ -78,6 +93,8 @@ public class TakeHands extends GameTemplate {
             Intent allow = new Intent(getApplicationContext(), TakeResults.class);
             allow.putExtra("START_FROM_0", startFrom0);
             allow.putExtra("ROUND_NUMBER", round);
+            allow.putExtra("STEP", step);
+            allow.putExtra("MODE", mode);
             startActivity(allow);
         }
         else {
@@ -101,6 +118,8 @@ public class TakeHands extends GameTemplate {
             Intent jumpDown = new Intent(getApplicationContext(), TakeHands.class);
             jumpDown.putExtra("START_FROM_0", startFrom0);
             jumpDown.putExtra("ROUND_NUMBER", new_round_limit);
+            jumpDown.putExtra("MODE", mode);
+            jumpDown.putExtra("STEP", step);
             startActivity(jumpDown);
         }
         else {
@@ -116,6 +135,19 @@ public class TakeHands extends GameTemplate {
             Collections.rotate(names, count - dealer.getId());
             adapter = new TakeHandsAdapter(this, names, round, fab);
             listView.setAdapter(adapter);adapter.notifyDataSetChanged();
+        }
+    }
+
+    private String getTrump() {
+        int rem = step % 4;
+        if(rem == 0) {
+            return "Spades";
+        } else if (rem == 1) {
+            return "Diamonds";
+        } else if (rem == 2) {
+            return "Clubs";
+        } else {
+            return "Hearts";
         }
     }
 

@@ -9,9 +9,12 @@ import android.os.Bundle;
 public class PlayGame extends AppCompatActivity {
 
     boolean startFrom0;
+    String mode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         startFrom0 = getIntent().getExtras().getBoolean("START_FROM_0");
+        mode = getIntent().getStringExtra("MODE");
         super.onCreate(savedInstanceState);
         AppDatabase.setAllScoresToZero(getApplicationContext());
         AppDatabase.setAllResultsToFalse(getApplicationContext());
@@ -26,6 +29,8 @@ public class PlayGame extends AppCompatActivity {
         }
         intent.putExtra("START_FROM_0", startFrom0);
         intent.putExtra("ROUND_NUMBER", dealnum);
+        intent.putExtra("MODE", mode);
+        intent.putExtra("STEP", 0);
         startActivity(intent);
     }
 }

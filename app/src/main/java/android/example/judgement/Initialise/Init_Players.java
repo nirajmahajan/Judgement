@@ -30,6 +30,7 @@ public class Init_Players extends AppCompatActivity {
     private ListView listView;
     private ArrayList<String> names;
     InitAdapter adapter;
+    String mode;
 
 
 
@@ -40,6 +41,7 @@ public class Init_Players extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_init);
         setSupportActionBar(toolbar);
 
+        mode = getIntent().getStringExtra("MODE");
         listView = findViewById(R.id.lv_init_players);
         names = new ArrayList<>();
         if (AppDatabase.getAppDatabase(getApplicationContext()).dao().countPlayers() != 0) {
@@ -108,8 +110,8 @@ public class Init_Players extends AppCompatActivity {
             startActivity(intent);
         }
         else if (id == R.id.menu_startGame) {
-            if (3 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
-                Toast.makeText(getApplicationContext(), "Need at least Three Players for the Game!", Toast.LENGTH_SHORT).show();
+            if (2 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
+                Toast.makeText(getApplicationContext(), "Need at least Two Players for the Game!", Toast.LENGTH_SHORT).show();
             }
             else {
                 AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers().get(0).setDealer(true);
@@ -117,6 +119,7 @@ public class Init_Players extends AppCompatActivity {
                 Log.clearEditLog();
                 Log.clearRoundLog();
                 Intent intent = new Intent(this, Init_Dealer.class);
+                intent.putExtra("MODE", mode);
                 startActivity(intent);
             }
         }

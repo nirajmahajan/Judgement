@@ -11,6 +11,7 @@ import android.example.judgement.log.Utils.Log;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -33,6 +34,8 @@ public class TakeResults extends GameTemplate {
     private boolean startFrom0;
     private int truth_count;
     FloatingActionButton fab;
+    String mode;
+    int step;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,17 @@ public class TakeResults extends GameTemplate {
         round = intent.getExtras().getInt("ROUND_NUMBER");
         startFrom0 = intent.getExtras().getBoolean("START_FROM_0");
         title = findViewById(R.id.tv_take_res_title);
+        mode = intent.getStringExtra("MODE");
+        step = intent.getExtras().getInt("STEP");
+
 
         setToolbarTitle("Taking Results");
         title.setText("Input Results of Round " + round);
+        if (mode.equals("FIXED")) {
+            title.setGravity(Gravity.LEFT);
+            title.setTextSize(25);
+            title.append("\nCurrent Trump is " + getTrump());
+        }
 
         fab = findViewById(R.id.fab_take_res_go);
         listView = findViewById(R.id.lv_take_res_players);
@@ -209,13 +220,31 @@ public class TakeResults extends GameTemplate {
             Intent jumpDown = new Intent(getApplicationContext(), TakeHands.class);
             jumpDown.putExtra("START_FROM_0", startFrom0);
             jumpDown.putExtra("ROUND_NUMBER", new_round_limit);
+            jumpDown.putExtra("MODE", mode);
+            jumpDown.putExtra("STEP", step + 1);
             startActivity(jumpDown);
         }
         else {
             Intent allow = new Intent(getApplicationContext(), TakeHands.class);
             allow.putExtra("START_FROM_0", startFrom0);
             allow.putExtra("ROUND_NUMBER", next_round);
+            allow.putExtra("MODE", mode);
+            allow.putExtra("STEP", step+1);
             startActivity(allow);
         }
     }
+
+    private String getTrump() {
+        int rem = step % 4;
+        if(rem == 0) {
+            return "Spades";
+        } else if (rem == 1) {
+            return "Diamonds";
+        } else if (rem == 2) {
+            return "Clubs";
+        } else {
+            return "Hearts";
+        }
+    }
+
 }
