@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
     tools:context=".Information.About">
 
     <TextView
@@ -17,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:text="About the Developer"
         android:textColor="@color/FullBlack"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,20 +32,63 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="App Developed By Niraj Mahajan, IIT Bombay, CSE."
+        android:textSize="20sp"
+        android:text="App Developed By Niraj Mahajan, IIT Bombay, CSE.\n\nFind me on:"
         android:textColor="@color/FullBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:autoLink="email"
-        android:text="nirajm@cse.iitb.ac.in"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" >
+
+        <TextView
+            android:id="@+id/mail"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="Mail"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:onClick="sendMail"
+            android:background="@color/colorAccent"
+            android:textColor="@color/FullWhite"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="Facebook"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:onClick="goToFb"
+            android:background="@color/DarkBlue"
+            android:textColor="@color/FullWhite"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/github"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="Github"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToGit"
+            android:background="@android:color/darker_gray"
+            android:textColor="@color/FullBlack"
+            android:textSize="20sp"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
