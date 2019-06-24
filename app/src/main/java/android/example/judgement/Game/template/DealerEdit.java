@@ -3,7 +3,7 @@ package android.example.judgement.Game.template;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.example.judgement.Initialise.About;
+import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;

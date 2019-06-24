@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.example.judgement.Information.About;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.graphics.Color;
@@ -66,6 +67,8 @@ public class TemplateActivity extends AppCompatActivity {
         if (id == R.id.menu_about) {
             Intent intent = new Intent(getApplicationContext(), About.class);
             startActivity(intent);
+        }else if (id == R.id.menu_done){
+            finish();
         }
         else if (id == R.id.menu_newGame) {
             final Activity context = this;

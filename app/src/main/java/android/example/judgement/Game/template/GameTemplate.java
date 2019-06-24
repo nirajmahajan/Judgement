@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.example.judgement.Game.template.ScoreboardDisplay.ScoreboardDisplay;
 import android.example.judgement.Game.template.ScoreboardEdit.ScoreBoardEdit;
 import android.example.judgement.Game.template.editPlayer.game_edit_player;
-import android.example.judgement.Initialise.About;
+import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.Init_Players;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;

@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".log.UI.editScoreLog.ShowEditScoreLog"></activity>
+        <activity android:name=".Information.FixedVsCustom"></activity>
+        <activity android:name=".log.UI.editScoreLog.ShowEditScoreLog" />
         <activity android:name=".log.UI.roundLog.ShowRoundLog" />
         <activity
             android:name=".Game.TakeResults.TakeResults"
@@ -44,7 +45,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity
-            android:name=".Initialise.About"
+            android:name=".Information.About"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Initialise.Init_Dealer"

@@ -86,6 +86,20 @@
 
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/main_fixed_vs_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Need Help?"
+        android:textStyle="italic"
+        android:textSize="20sp"
+        android:clickable="true"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="@id/rg_main"
+        app:layout_constraintBottom_toBottomOf="@id/rg_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rg_main"/>
+
     <Button
         android:id="@+id/b_welcome_go"
         android:layout_width="107dp"

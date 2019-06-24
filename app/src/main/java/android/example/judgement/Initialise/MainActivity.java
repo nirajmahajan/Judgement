@@ -1,6 +1,8 @@
 package android.example.judgement.Initialise;
 
 import android.content.Intent;
+import android.example.judgement.Information.About;
+import android.example.judgement.Information.FixedVsCustom;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.graphics.Color;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup rg_main;
     RadioButton rb_custom;
     RadioButton rb_fixed;
-
+    TextView tv_need_help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Judgement");
         toolbar.setTitleTextColor(Color.WHITE);
+        tv_need_help = findViewById(R.id.main_fixed_vs_custom);
+        tv_need_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FixedVsCustom.class);
+                startActivity(intent);
+            }
+        });
         rg_main = findViewById(R.id.rg_main);
         rb_custom = findViewById(R.id.rb_main_custom_trump);
         rb_fixed = findViewById(R.id.rb_main_fixed_trump);
