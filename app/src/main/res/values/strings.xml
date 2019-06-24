@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Judgement</string>
+    <string name="app_name">Judgement Scoreboard</string>
     <string name="welcome_message">Welcome to the Judgement Scoreboard!</string>
     <string name="go">GO!</string>
     <string name="title_activity_init__players">Init_Players</string>

@@ -9,18 +9,6 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_id_take_res"
-        android:layout_width="50dp"
-        android:text="6"
-        android:textSize="30sp"
-        android:gravity="center|center_vertical"
-        android:layout_height="match_parent"
-        android:textColor="@color/FullBlack"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
         android:id="@+id/tv_take_res_name"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
@@ -32,8 +20,22 @@
         android:textSize="25sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_id_take_res"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/tv_prediction_take_res"
+        android:layout_width="50dp"
+        android:text="6"
+        android:textSize="30sp"
+        android:layout_marginRight="10dp"
+        android:gravity="center|center_vertical"
+        android:layout_height="match_parent"
+        android:textColor="@color/FullBlack"
+        android:background="@color/cobalt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rg_take_res_result"/>
 
 
     <RadioGroup
@@ -53,13 +55,13 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|left"
             android:textColor="@color/FullBlack"
-            android:buttonTint="@color/GoButton"
-            android:textSize="20sp"
+            android:buttonTint="@color/Win"
+            android:textSize="25sp"
             android:text="Yes"/>
         <RadioButton
             android:id="@+id/radio_no"
             android:layout_width="match_parent"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textColor="@color/FullBlack"
             android:layout_height="wrap_content"
             android:buttonTint="@android:color/holo_red_dark"

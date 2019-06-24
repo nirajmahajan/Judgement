@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
+import android.example.judgement.log.Utils.Log;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -93,11 +94,6 @@ public class Init_Players extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Cannot go Back at this stage", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.init_menu, menu);
         return true;
@@ -118,6 +114,8 @@ public class Init_Players extends AppCompatActivity {
             else {
                 AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers().get(0).setDealer(true);
                 AppDatabase.normalizeIDs(getApplicationContext());
+                Log.clearEditLog();
+                Log.clearRoundLog();
                 Intent intent = new Intent(this, Init_Dealer.class);
                 startActivity(intent);
             }

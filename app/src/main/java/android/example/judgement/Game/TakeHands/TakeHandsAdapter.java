@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,13 @@ public class TakeHandsAdapter extends ArrayAdapter {
     private final Activity context;
     private int round;
     FloatingActionButton fab;
+    LinearLayout suggestions;
     ArrayList<String> names;
+    private Button suggest_0;
+    private Button suggest_1;
+    private Button suggest_2;
+    private EditText current_open_ET;
+    private ImageButton current_open_Done;
 
     TakeHandsAdapter(Activity context, ArrayList<String> names, int round, FloatingActionButton fab) {
         super(context, R.layout.take_hands_object, names);
@@ -48,6 +55,40 @@ public class TakeHandsAdapter extends ArrayAdapter {
         final EditText et_hands = rowView.findViewById(R.id.et_take_hands);
         final ImageButton b_set = rowView.findViewById(R.id.b_set_take);
         final ImageButton b_edit = rowView.findViewById(R.id.b_edit_take);
+
+        // manage suggestions
+        suggestions = context.findViewById(R.id.ll_take_hands_suggest);
+        suggest_0 = suggestions.findViewById(R.id.b_take_hands_suggest_0);
+        suggest_1 = suggestions.findViewById(R.id.b_take_hands_suggest_1);
+        suggest_2 = suggestions.findViewById(R.id.b_take_hands_suggest_2);
+
+        suggest_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                current_open_ET.setText("0");
+                current_open_Done.performClick();
+                notifyDataSetChanged();
+            }
+        });
+        suggest_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                current_open_ET.setText("1");
+                current_open_Done.performClick();
+                notifyDataSetChanged();
+            }
+        });
+        suggest_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                current_open_ET.setText("2");
+                current_open_Done.performClick();
+                notifyDataSetChanged();
+            }
+        });
+
+
+
         final Player player = AppDatabase.getAppDatabase(context).dao().findByName(names.get(position));
         Player next = AppDatabase.nextPlayer(context, player);
         Player previous = AppDatabase.previousPlayer(context, player);
@@ -60,9 +101,11 @@ public class TakeHandsAdapter extends ArrayAdapter {
         }
         if (allEntered()) {
             fab.setVisibility(View.VISIBLE);
+            suggestions.setVisibility(View.INVISIBLE);
         }
         else {
             fab.setVisibility(View.INVISIBLE);
+            suggestions.setVisibility(View.VISIBLE);
         }
 
         tv_id.setText(String.valueOf(position + 1));
@@ -73,6 +116,9 @@ public class TakeHandsAdapter extends ArrayAdapter {
             b_edit.setVisibility(View.INVISIBLE);
             b_set.setVisibility(View.VISIBLE);
             et_hands.setVisibility(View.VISIBLE);
+            et_hands.requestFocus();
+            current_open_ET = et_hands;
+            current_open_Done = b_set;
         }
         else if (previous.getDealer() && next.getPrediction() == -1) {
             tv_hands.setVisibility(View.VISIBLE);
@@ -95,6 +141,9 @@ public class TakeHandsAdapter extends ArrayAdapter {
         }
         else if (dealer && player.getPrediction() == -1) {
             et_hands.setVisibility(View.VISIBLE);
+            et_hands.requestFocus();
+            current_open_ET = et_hands;
+            current_open_Done = b_set;
             b_edit.setVisibility(View.INVISIBLE);
             b_set.setVisibility(View.VISIBLE);
             tv_hands.setVisibility(View.INVISIBLE);
@@ -110,6 +159,9 @@ public class TakeHandsAdapter extends ArrayAdapter {
             b_edit.setVisibility(View.INVISIBLE);
             b_set.setVisibility(View.VISIBLE);
             et_hands.setVisibility(View.VISIBLE);
+            et_hands.requestFocus();
+            current_open_ET = et_hands;
+            current_open_Done = b_set;
         }
         else if (dealer) {
             et_hands.setVisibility(View.INVISIBLE);

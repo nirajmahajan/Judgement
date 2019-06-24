@@ -11,35 +11,59 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Game.TakeResults.TakeResults" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.TakeHands.TakeHands"
+        <activity android:name=".log.UI.editScoreLog.ShowEditScoreLog"></activity>
+        <activity android:name=".log.UI.roundLog.ShowRoundLog" />
+        <activity
+            android:name=".Game.TakeResults.TakeResults"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.TakeHands.TakeHands"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|adjustPan"/>
-        <activity android:name=".Game.PlayGame" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.ShowFinalScore.DisplayFinalScore" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.template.DealerEdit" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.template.ScoreboardEdit.ScoreBoardEdit" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.template.ScoreboardDisplay.ScoreboardDisplay" android:screenOrientation="portrait"/>
-        <activity android:name=".Game.template.editPlayer.game_edit_player" android:screenOrientation="portrait"/>
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Game.PlayGame"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.ShowFinalScore.DisplayFinalScore"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.template.DealerEdit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.template.ScoreboardEdit.ScoreBoardEdit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.template.ScoreboardDisplay.ScoreboardDisplay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.template.editPlayer.game_edit_player"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Game.template.GameTemplate"
             android:label="@string/title_activity_game_template"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Initialise.About" android:screenOrientation="portrait"/>
-        <activity android:name=".Initialise.Init_Dealer" android:screenOrientation="portrait"/>
-        <activity android:name=".Initialise.TemplateActivity" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+        <activity
+            android:name=".Initialise.About"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Initialise.Init_Dealer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Initialise.TemplateActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Initialise.Init_Players"
             android:label="@string/title_activity_init__players"
             android:parentActivityName=".Initialise.MainActivity"
-            tools:targetApi="jelly_bean"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.example.judgement.Initialise.MainActivity" />
         </activity>
-        <activity android:name=".Initialise.MainActivity"
+        <activity
+            android:name=".Initialise.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

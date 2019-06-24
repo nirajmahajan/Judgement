@@ -6,6 +6,7 @@ import android.example.judgement.Initialise.Init_Players;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
+import android.example.judgement.log.Utils.Log;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -73,6 +74,8 @@ public class DisplayFinalScore extends AppCompatActivity {
         AppDatabase.setAllPredictionsToReset(getApplicationContext());
         AppDatabase.setAllResultsToFalse(getApplicationContext());
         AppDatabase.setAllScoresToZero(getApplicationContext());
+        Log.clearEditLog();
+        Log.clearRoundLog();
 
         Intent intent = new Intent(getApplicationContext(), Init_Players.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

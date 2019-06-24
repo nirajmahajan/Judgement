@@ -3,6 +3,8 @@ package android.example.judgement.Game.TakeResults;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.example.judgement.R;
+import android.example.judgement.database.AppDatabase;
+import android.example.judgement.database.Player;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,13 +36,13 @@ public class TakeResultsAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.take_results_object, null, true);
 
         rowView.setId(position);
-        TextView tv_id = rowView.findViewById(R.id.tv_id_take_res);
+        TextView tv_pred = rowView.findViewById(R.id.tv_prediction_take_res);
         TextView tv_name = rowView.findViewById(R.id.tv_take_res_name);
         RadioGroup rg_response = rowView.findViewById(R.id.rg_take_res_result);
 
-        tv_id.setText(String.valueOf(position + 1));
-        tv_name.setText(names.get(position));
-
+        Player player = AppDatabase.getAppDatabase(context).dao().findByName(names.get(position));
+        tv_pred.setText(String.valueOf(player.getPrediction()));
+        tv_name.setText(player.getName());
 
         return rowView;
     }

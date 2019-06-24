@@ -7,9 +7,11 @@ import android.content.res.ColorStateList;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
+import android.example.judgement.log.Utils.Log;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +63,7 @@ public class ScoreboardEditAdapter extends ArrayAdapter {
 
     private void editListen(ConstraintLayout v) {
         final EditText et_GetName = new EditText(context);
+        et_GetName.setInputType(InputType.TYPE_CLASS_NUMBER);
         et_GetName.setHint("New Score");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             et_GetName.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
@@ -80,7 +83,7 @@ public class ScoreboardEditAdapter extends ArrayAdapter {
                         String new_score = et_GetName.getText().toString();
                         Player player = AppDatabase.getAppDatabase(context).dao().findByName(name);
                         if (AppDatabase.getAppDatabase(context).dao().findById(player.getId()).getScore() != Integer.parseInt(new_score)) {
-
+                            Log.recordEditScore(name, player.getScore(), Integer.parseInt(new_score));
                             AppDatabase.getAppDatabase(context).dao().delete(player);
                             player.setScore(Integer.parseInt(new_score));
                             AppDatabase.getAppDatabase(context).dao().insertAll(player);

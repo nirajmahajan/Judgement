@@ -46,10 +46,11 @@ public class TemplateActivity extends AppCompatActivity {
         return true;
     }
 
+    protected int useMenu() {return R.menu.main_menu;}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(useMenu(), menu);
         return true;
     }
 

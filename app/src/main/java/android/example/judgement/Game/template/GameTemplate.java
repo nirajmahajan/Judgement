@@ -11,6 +11,8 @@ import android.example.judgement.Initialise.About;
 import android.example.judgement.Initialise.Init_Players;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
+import android.example.judgement.log.UI.editScoreLog.ShowEditScoreLog;
+import android.example.judgement.log.UI.roundLog.ShowRoundLog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
 public class GameTemplate extends AppCompatActivity
@@ -33,6 +36,7 @@ public class GameTemplate extends AppCompatActivity
     DrawerLayout drawer;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    Activity activity = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +59,13 @@ public class GameTemplate extends AppCompatActivity
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                hideKeyboard(activity);
+                super.onDrawerOpened(drawerView);
+            }
+        };
         if (useDrawer())
         {
             drawer.addDrawerListener(toggle);
@@ -166,10 +176,26 @@ public class GameTemplate extends AppCompatActivity
         } else if (id == R.id.nav_dealer_edit_mode) {
             Intent intent = new Intent(getApplicationContext(), DealerEdit.class);
             startActivity(intent);
+        } else if (id == R.id.nav_round_log) {
+            Intent intent = new Intent(getApplicationContext(), ShowRoundLog.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_edit_score_log) {
+            Intent intent = new Intent(getApplicationContext(), ShowEditScoreLog.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

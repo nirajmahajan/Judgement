@@ -3,14 +3,13 @@ package android.example.judgement.Game.TakeResults;
 import android.content.Intent;
 import android.example.judgement.Game.ShowFinalScore.DisplayFinalScore;
 import android.example.judgement.Game.TakeHands.TakeHands;
-import android.example.judgement.Game.TakeHands.TakeHandsAdapter;
 import android.example.judgement.Game.template.GameTemplate;
 import android.example.judgement.R;
 import android.example.judgement.database.AppDatabase;
 import android.example.judgement.database.Player;
+import android.example.judgement.log.Utils.Log;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -88,7 +87,9 @@ public class TakeResults extends GameTemplate {
                 }
             }
 
-            if (checkSumOfAllWinners()){
+            if (checkZeroFolks() != null) {
+                Toast.makeText(getApplicationContext(), checkZeroFolks().getName() + " Cannot lose", Toast.LENGTH_LONG).show();
+            } else if (checkSumOfAllWinners()){
                 startAppropriateActivity();
             }
             else {
@@ -112,6 +113,25 @@ public class TakeResults extends GameTemplate {
             }
         }
         return (counter <= round);
+    }
+
+    private Player checkZeroFolks() {
+        List<Player> players = AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers();
+        int sum = 0;
+        for (Player player : players) {
+            if(player.getResult()) {
+                sum += player.getPrediction();
+            }
+        }
+
+        if (sum == round) {
+            for (Player player : players) {
+                if (!player.getResult() && player.getPrediction()==0) {
+                    return player;
+                }
+            }
+        }
+        return null;
     }
 
     private boolean allFilled() {
@@ -170,6 +190,7 @@ public class TakeResults extends GameTemplate {
             next_round = (round - 1);
         }
         AppDatabase.addAllScores(getApplicationContext());
+        Log.captureRoundLog(getApplicationContext(), round);
         AppDatabase.setAllPredictionsToReset(getApplicationContext());
         AppDatabase.setAllResultsToFalse(getApplicationContext());
         AppDatabase.moveDealer(getApplicationContext());
