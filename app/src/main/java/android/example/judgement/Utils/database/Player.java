@@ -1,4 +1,4 @@
-package android.example.judgement.database;
+package android.example.judgement.Utils.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

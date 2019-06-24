@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.example.judgement.Game.template.DealerEdit;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 

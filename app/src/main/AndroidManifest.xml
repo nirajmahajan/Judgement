@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Information.FixedVsCustom"></activity>
-        <activity android:name=".log.UI.editScoreLog.ShowEditScoreLog" />
-        <activity android:name=".log.UI.roundLog.ShowRoundLog" />
+        <activity android:name=".Utils.log.UI.editScoreLog.ShowEditScoreLog" />
+        <activity android:name=".Utils.log.UI.roundLog.ShowRoundLog" />
         <activity
             android:name=".Game.TakeResults.TakeResults"
             android:screenOrientation="portrait" />

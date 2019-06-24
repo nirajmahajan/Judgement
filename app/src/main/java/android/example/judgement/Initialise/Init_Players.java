@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.example.judgement.Information.About;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
-import android.example.judgement.log.Utils.Log;
+import android.example.judgement.Utils.Utils;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
+import android.example.judgement.Utils.log.Utils.Log;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -125,10 +126,7 @@ public class Init_Players extends AppCompatActivity {
             }
         }
         else if (id == R.id.int_menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
+            Utils.quitApp(getApplicationContext(), this);
         }
 
 

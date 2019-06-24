@@ -6,7 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
+import android.example.judgement.Utils.Utils;
+import android.example.judgement.Utils.database.AppDatabase;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -92,10 +93,7 @@ public class TemplateActivity extends AppCompatActivity {
                     .show();
         }
         else if (id == R.id.menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
+            Utils.quitApp(getApplicationContext(), this);
         }
 
 

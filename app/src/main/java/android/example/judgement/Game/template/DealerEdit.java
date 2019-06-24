@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
+import android.example.judgement.Utils.database.AppDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,19 +91,7 @@ public class DealerEdit extends TemplateActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.about_only, menu);
+        getMenuInflater().inflate(R.menu.empty, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.game_menu_about) {
-            Intent intent = new Intent(getApplicationContext(), About.class);
-            startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

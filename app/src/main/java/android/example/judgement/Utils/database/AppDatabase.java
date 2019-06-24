@@ -1,12 +1,14 @@
-package android.example.judgement.database;
+package android.example.judgement.Utils.database;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+import android.example.judgement.Utils.Utils;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +30,10 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public static void destroyInstance() {
+    public static void destroyInstance(Context context) {
         INSTANCE.dao().purge();
+        File db = new File(context.getDatabasePath("player-database").getPath());
+        Utils.DeleteRecursive(db);
         INSTANCE = null;
     }
 

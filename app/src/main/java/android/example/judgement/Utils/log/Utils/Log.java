@@ -1,11 +1,11 @@
-package android.example.judgement.log.Utils;
+package android.example.judgement.Utils.log.Utils;
 
 import android.content.Context;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
-import android.example.judgement.log.Utils.EditScoreLog.EditScoreInstance;
-import android.example.judgement.log.Utils.RoundLog.RoundObject;
-import android.example.judgement.log.Utils.RoundLog.playerObject;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
+import android.example.judgement.Utils.log.Utils.EditScoreLog.EditScoreInstance;
+import android.example.judgement.Utils.log.Utils.RoundLog.RoundObject;
+import android.example.judgement.Utils.log.Utils.RoundLog.playerObject;
 
 import java.util.ArrayList;
 import java.util.List;

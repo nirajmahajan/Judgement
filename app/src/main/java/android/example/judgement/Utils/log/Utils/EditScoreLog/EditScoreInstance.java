@@ -1,4 +1,4 @@
-package android.example.judgement.log.Utils.EditScoreLog;
+package android.example.judgement.Utils.log.Utils.EditScoreLog;
 
 public class EditScoreInstance {
     private String name;

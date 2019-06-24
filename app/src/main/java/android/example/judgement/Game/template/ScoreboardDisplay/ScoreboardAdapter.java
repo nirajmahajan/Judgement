@@ -2,8 +2,8 @@ package android.example.judgement.Game.template.ScoreboardDisplay;
 
 import android.app.Activity;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

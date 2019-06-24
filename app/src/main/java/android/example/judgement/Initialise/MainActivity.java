@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.Information.FixedVsCustom;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
+import android.example.judgement.Utils.database.AppDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         // just comment out this override to maintain the database after 'destroy'
-        AppDatabase.getAppDatabase(getApplicationContext()).dao().purge();
-        AppDatabase.destroyInstance();
+        AppDatabase.destroyInstance(getApplicationContext());
         super.onDestroy();
     }
 

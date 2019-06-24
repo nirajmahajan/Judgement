@@ -1,9 +1,9 @@
-package android.example.judgement.log.UI.editScoreLog;
+package android.example.judgement.Utils.log.UI.editScoreLog;
 
 import android.app.Activity;
 import android.content.Context;
 import android.example.judgement.R;
-import android.example.judgement.log.Utils.EditScoreLog.EditScoreInstance;
+import android.example.judgement.Utils.log.Utils.EditScoreLog.EditScoreInstance;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

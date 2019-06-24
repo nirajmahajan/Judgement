@@ -1,10 +1,10 @@
-package android.example.judgement.log.UI.roundLog;
+package android.example.judgement.Utils.log.UI.roundLog;
 
 import android.app.Activity;
 import android.content.Context;
 import android.example.judgement.R;
-import android.example.judgement.log.Utils.RoundLog.RoundObject;
-import android.example.judgement.log.Utils.RoundLog.playerObject;
+import android.example.judgement.Utils.log.Utils.RoundLog.RoundObject;
+import android.example.judgement.Utils.log.Utils.RoundLog.playerObject;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;

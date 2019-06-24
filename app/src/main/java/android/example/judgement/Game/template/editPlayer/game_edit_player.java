@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.example.judgement.Information.About;
+import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
+import android.example.judgement.Utils.Utils;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +31,8 @@ public class game_edit_player extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<String> names;
+
+
     InitAdapter adapter;
 
 
@@ -96,7 +100,7 @@ public class game_edit_player extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.game_edit_players, menu);
+        getMenuInflater().inflate(R.menu.done, menu);
         return true;
     }
 
@@ -104,25 +108,14 @@ public class game_edit_player extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.game_ep_menu_about) {
-            Intent intent = new Intent(getApplicationContext(), About.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.game_ep_menu_done) {
-            if (3 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
-                Toast.makeText(getApplicationContext(), "Need at least Three Players for the Game!", Toast.LENGTH_SHORT).show();
+        if (id == R.id.menu_done) {
+            if (2 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
+                Toast.makeText(getApplicationContext(), "Need at least Two Players for the Game!", Toast.LENGTH_SHORT).show();
             }
             else {
                 finish();
             }
         }
-        else if (id == R.id.game_ep_int_menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
-        }
-
 
         return super.onOptionsItemSelected(item);
     }

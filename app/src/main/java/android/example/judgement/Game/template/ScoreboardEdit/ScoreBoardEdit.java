@@ -3,8 +3,8 @@ package android.example.judgement.Game.template.ScoreboardEdit;
 import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.database.Player;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -57,7 +57,7 @@ public class ScoreBoardEdit extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.game_edit_players, menu);
+        getMenuInflater().inflate(R.menu.done, menu);
         return true;
     }
 
@@ -65,25 +65,9 @@ public class ScoreBoardEdit extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.game_ep_menu_about) {
-            Intent intent = new Intent(getApplicationContext(), About.class);
-            startActivity(intent);
+        if (id == R.id.menu_done) {
+            finish();
         }
-        else if (id == R.id.game_ep_menu_done) {
-            if (3 > AppDatabase.getAppDatabase(this).dao().countPlayers()){
-                Toast.makeText(getApplicationContext(), "Need at least Three Players for the Game!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                finish();
-            }
-        }
-        else if (id == R.id.game_ep_int_menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
-        }
-
 
         return super.onOptionsItemSelected(item);
     }

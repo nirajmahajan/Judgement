@@ -1,10 +1,8 @@
-package android.example.judgement.log.UI.roundLog;
+package android.example.judgement.Utils.log.UI.roundLog;
 
 import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
-import android.example.judgement.log.UI.editScoreLog.Adapter;
-import android.example.judgement.log.Utils.Log;
-import android.support.v7.app.AppCompatActivity;
+import android.example.judgement.Utils.log.Utils.Log;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;

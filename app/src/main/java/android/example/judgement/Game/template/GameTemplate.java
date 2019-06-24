@@ -10,10 +10,12 @@ import android.example.judgement.Game.template.editPlayer.game_edit_player;
 import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.Init_Players;
 import android.example.judgement.R;
-import android.example.judgement.database.AppDatabase;
-import android.example.judgement.log.UI.editScoreLog.ShowEditScoreLog;
-import android.example.judgement.log.UI.roundLog.ShowRoundLog;
+import android.example.judgement.Utils.Utils;
+import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.log.UI.editScoreLog.ShowEditScoreLog;
+import android.example.judgement.Utils.log.UI.roundLog.ShowRoundLog;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -145,10 +147,7 @@ public class GameTemplate extends AppCompatActivity
                     .show();
         }
         else if (id == R.id.game_menu_exit) {
-            AppDatabase.getAppDatabase(this).dao().purge();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
+            Utils.quitApp(getApplicationContext(), this);
         } else if (id == R.id.game_menu_scorecard){
             Intent intent = new Intent(getApplicationContext(), ScoreboardDisplay.class);
             startActivity(intent);

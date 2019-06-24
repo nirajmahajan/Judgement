@@ -1,4 +1,4 @@
-package android.example.judgement.log.Utils.RoundLog;
+package android.example.judgement.Utils.log.Utils.RoundLog;
 
 public class playerObject {
     String name;
