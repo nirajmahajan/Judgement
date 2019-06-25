@@ -3,6 +3,7 @@ package android.example.judgement.Initialise;
 import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.Information.FixedVsCustom;
+import android.example.judgement.Information.help.HelpBase;
 import android.example.judgement.R;
 import android.example.judgement.Utils.database.AppDatabase;
 import android.graphics.Color;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         // just comment out this override to maintain the database after 'destroy'
-        AppDatabase.destroyInstance(getApplicationContext());
+//        AppDatabase.destroyInstance(getApplicationContext());
         super.onDestroy();
     }
 
@@ -90,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
             moveTaskToBack(true);
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
+        }
+        else if (id == R.id.menu_help) {
+            Intent intent = new Intent(getApplicationContext(), HelpBase.class);
+            startActivity(intent);
         }
 
 

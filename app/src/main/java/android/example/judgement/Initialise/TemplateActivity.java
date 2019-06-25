@@ -8,6 +8,7 @@ import android.example.judgement.Information.About;
 import android.example.judgement.R;
 import android.example.judgement.Utils.Utils;
 import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.log.Utils.Log;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -80,10 +81,16 @@ public class TemplateActivity extends AppCompatActivity {
                     .setPositiveButton("Restart", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            AppDatabase.getAppDatabase(getApplicationContext()).dao().purge();
-                            Intent intent = new Intent(context, Init_Players.class);
+                            AppDatabase.setAllPredictionsToReset(getApplicationContext());
+                            AppDatabase.setAllResultsToFalse(getApplicationContext());
+                            AppDatabase.setAllScoresToZero(getApplicationContext());
+                            Log.clearEditLog();
+                            Log.clearRoundLog();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                             dialog.cancel();
                             startActivity(intent);
+                            finish();
                         }
                     })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
