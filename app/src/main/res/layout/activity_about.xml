@@ -37,7 +37,18 @@
         android:textColor="@color/FullBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_about_version" />
+
+    <TextView
+        android:id="@+id/tv_title_about_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Judgement Scoreboard v1.1"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="@color/DarkBlue"
+        app:layout_constraintTop_toBottomOf="@id/imageView2"/>
 
 
     <LinearLayout
@@ -91,4 +102,18 @@
             android:textColor="@color/FullBlack"
             android:textSize="20sp"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        tools:layout_editor_absoluteY="356dp" />
 </android.support.constraint.ConstraintLayout>

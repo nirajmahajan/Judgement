@@ -11,13 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Information.help.HelpBase"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Information.FixedVsCustom"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Utils.log.UI.editScoreLog.ShowEditScoreLog"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Utils.log.UI.roundLog.ShowRoundLog"
+        <activity android:name=".Information.help.HelpTemplate"></activity>
+        <activity
+            android:name=".Information.help.HelpBase"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Information.FixedVsCustom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Utils.log.UI.editScoreLog.ShowEditScoreLog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Utils.log.UI.roundLog.ShowRoundLog"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Game.TakeResults.TakeResults"
