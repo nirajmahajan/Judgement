@@ -3,21 +3,22 @@ package android.example.judgement.Information.help.activities;
 import android.example.judgement.Information.help.HelpTemplate;
 import android.os.Bundle;
 
-public class chooseMode extends HelpTemplate {
+public class finishingGame extends HelpTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    protected Class nextActivity() {
-        return addingPlayers.class;
+    protected boolean hideNextButton() {
+        return true;
     }
 
     @Override
-    protected boolean hidePrevButton() {
-        return true;
+    protected Class prevActivity() {
+        return viewingLogs.class;
     }
+
 
     @Override
     protected int image() {
@@ -31,6 +32,6 @@ public class chooseMode extends HelpTemplate {
 
     @Override
     protected String pageTitle() {
-        return "Choosing a mode";
+        return "Finishing the Game";
     }
 }

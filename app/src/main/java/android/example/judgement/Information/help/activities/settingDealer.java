@@ -3,20 +3,20 @@ package android.example.judgement.Information.help.activities;
 import android.example.judgement.Information.help.HelpTemplate;
 import android.os.Bundle;
 
-public class chooseMode extends HelpTemplate {
+public class settingDealer extends HelpTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    protected Class nextActivity() {
+    protected Class prevActivity() {
         return addingPlayers.class;
     }
 
     @Override
-    protected boolean hidePrevButton() {
-        return true;
+    protected Class nextActivity() {
+        return takingBids.class;
     }
 
     @Override
@@ -31,6 +31,6 @@ public class chooseMode extends HelpTemplate {
 
     @Override
     protected String pageTitle() {
-        return "Choosing a mode";
+        return "Selecting the starting deal and Dealer";
     }
 }

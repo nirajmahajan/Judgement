@@ -37,7 +37,7 @@ public class TemplateActivity extends AppCompatActivity {
         if (useToolbar())
         {
             setSupportActionBar(toolbar);
-            setTitle("Judgement");
+            setTitle(setTitle());
             toolbar.setTitleTextColor(Color.WHITE);
         }
         else
@@ -105,5 +105,9 @@ public class TemplateActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected String setTitle() {
+        return "Judgement";
     }
 }

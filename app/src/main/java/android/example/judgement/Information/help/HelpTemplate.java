@@ -31,6 +31,7 @@ public class HelpTemplate extends AppCompatActivity {
     private Button next;
     private ImageView screenshot;
     private TextView tv_description;
+    private TextView title;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +49,14 @@ public class HelpTemplate extends AppCompatActivity {
         next = findViewById(R.id.help_next);
         screenshot = findViewById(R.id.iv_help_template_screenshot);
         tv_description = findViewById(R.id.tv_help_template_describe);
+        title = findViewById(R.id.help_title_page);
 
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), prevActivity());
                 startActivity(intent);
+                finish();
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
@@ -61,19 +64,21 @@ public class HelpTemplate extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), nextActivity());
                 startActivity(intent);
+                finish();
             }
         });
 
         if(hideNextButton()) {
             next.setVisibility(View.INVISIBLE);
         }
+
         if(hidePrevButton()) {
             prev.setVisibility(View.INVISIBLE);
         }
 
         screenshot.setImageDrawable(getResources().getDrawable(image()));
-        tv_description.setText(Description());
-
+        tv_description.setText(description());
+        title.setText(pageTitle());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (useToolbar())
@@ -111,8 +116,10 @@ public class HelpTemplate extends AppCompatActivity {
     protected java.lang.Class nextActivity() {return MainActivity.class;}
     protected java.lang.Class prevActivity() {return MainActivity.class;}
 
-    protected String Description() {return "Description Here\n\n\n";}
+    protected String description() {return "Description Here\n\n\n";}
     protected int image() {return R.drawable.ic_launcher_foreground;}
+    protected String pageTitle() {return "The title of this page is abcd";}
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -11,8 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Information.help.activities.chooseMode"></activity>
+        <activity android:name=".Information.help.activities.howToPlay"></activity>
+        <activity android:name=".Information.help.activities.addingPlayers" />
+        <activity android:name=".Information.help.activities.chooseMode" />
+        <activity android:name=".Information.help.activities.editPlayerDetails" />
         <activity android:name=".Information.help.HelpTemplate" />
+        <activity android:name=".Information.help.activities.editScore" />
+        <activity android:name=".Information.help.activities.enteringResults" />
+        <activity android:name=".Information.help.activities.finishingGame" />
+        <activity android:name=".Information.help.activities.settingDealer" />
+        <activity android:name=".Information.help.activities.takingBids" />
+        <activity android:name=".Information.help.activities.viewingLogs" />
+        <activity android:name=".Information.help.activities.viewingScorecard" />
         <activity
             android:name=".Information.help.HelpBase"
             android:screenOrientation="portrait" />

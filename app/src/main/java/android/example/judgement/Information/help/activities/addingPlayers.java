@@ -1,22 +1,23 @@
 package android.example.judgement.Information.help.activities;
 
 import android.example.judgement.Information.help.HelpTemplate;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class chooseMode extends HelpTemplate {
+public class addingPlayers extends HelpTemplate {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    protected Class nextActivity() {
-        return addingPlayers.class;
+    protected Class prevActivity() {
+        return chooseMode.class;
     }
 
     @Override
-    protected boolean hidePrevButton() {
-        return true;
+    protected Class nextActivity() {
+        return settingDealer.class;
     }
 
     @Override
@@ -31,6 +32,6 @@ public class chooseMode extends HelpTemplate {
 
     @Override
     protected String pageTitle() {
-        return "Choosing a mode";
+        return "Adding Players";
     }
 }
