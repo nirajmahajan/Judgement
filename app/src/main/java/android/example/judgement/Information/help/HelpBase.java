@@ -1,8 +1,9 @@
 package android.example.judgement.Information.help;
 
+import android.content.Intent;
+import android.example.judgement.Information.help.activities.chooseMode;
 import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -24,7 +25,8 @@ public class HelpBase extends TemplateActivity {
     }
 
     public void mode(View view) {
-
+        Intent intent = new Intent(this, chooseMode.class);
+        startActivity(intent);
     }
 
     public void initPlayer(View view) {

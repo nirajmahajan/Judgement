@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.net.Inet4Address;
 
@@ -27,21 +29,25 @@ public class HelpTemplate extends AppCompatActivity {
 
     private Button prev;
     private Button next;
+    private ImageView screenshot;
+    private TextView tv_description;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_help_template);
+        followUp();
     }
 
 
-    @Override
-    public void setContentView(int layoutResID)
+    private  void followUp()
     {
         DrawerLayout fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_help_template, null);
         FrameLayout activityContainer = (FrameLayout) fullView.findViewById(R.id.help_template_activity_content);
-        getLayoutInflater().inflate(layoutResID, activityContainer, true);
         super.setContentView(fullView);
         prev = findViewById(R.id.help_prev);
         next = findViewById(R.id.help_next);
+        screenshot = findViewById(R.id.iv_help_template_screenshot);
+        tv_description = findViewById(R.id.tv_help_template_describe);
 
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +71,9 @@ public class HelpTemplate extends AppCompatActivity {
             prev.setVisibility(View.INVISIBLE);
         }
 
+        screenshot.setImageDrawable(getResources().getDrawable(image()));
+        tv_description.setText(Description());
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (useToolbar())
@@ -78,6 +87,7 @@ public class HelpTemplate extends AppCompatActivity {
             toolbar.setVisibility(View.GONE);
         }
     }
+
     protected boolean useToolbar() {
         return true;
     }
@@ -100,6 +110,9 @@ public class HelpTemplate extends AppCompatActivity {
 
     protected java.lang.Class nextActivity() {return MainActivity.class;}
     protected java.lang.Class prevActivity() {return MainActivity.class;}
+
+    protected String Description() {return "Description Here\n\n\n";}
+    protected int image() {return R.drawable.ic_launcher_foreground;}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

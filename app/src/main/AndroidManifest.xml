@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Information.help.HelpTemplate"></activity>
+        <activity android:name=".Information.help.activities.chooseMode"></activity>
+        <activity android:name=".Information.help.HelpTemplate" />
         <activity
             android:name=".Information.help.HelpBase"
             android:screenOrientation="portrait" />
