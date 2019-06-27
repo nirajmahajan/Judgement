@@ -7,13 +7,19 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_help"
+        android:title="Help"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_about"
         android:title="About"
-        android:orderInCategory="300"
+        android:orderInCategory="301"
         app:showAsAction="never" />
     <item
         android:id="@+id/int_menu_exit"
         android:title="Exit"
-        android:orderInCategory="301"
+        android:orderInCategory="302"
         app:showAsAction="never" />
 </menu>

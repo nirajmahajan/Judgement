@@ -2,13 +2,19 @@ package android.example.judgement.Game.TakeHands;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.example.judgement.R;
+import android.example.judgement.Utils.Utils;
 import android.example.judgement.Utils.database.AppDatabase;
 import android.example.judgement.Utils.database.Player;
 import android.support.design.widget.FloatingActionButton;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +31,7 @@ public class TakeHandsAdapter extends ArrayAdapter {
     private int round;
     FloatingActionButton fab;
     LinearLayout suggestions;
-    ArrayList<String> names;
+    private final ArrayList<String> names;
     private Button suggest_0;
     private Button suggest_1;
     private Button suggest_2;
@@ -52,6 +58,31 @@ public class TakeHandsAdapter extends ArrayAdapter {
         final EditText et_hands = rowView.findViewById(R.id.et_take_hands);
         final ImageButton b_set = rowView.findViewById(R.id.b_set_take);
         final ImageButton b_edit = rowView.findViewById(R.id.b_edit_take);
+
+        et_hands.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    b_set.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+        et_hands.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                et_hands.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(et_hands, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                });
+            }
+        });
 
         // manage suggestions
         suggestions = context.findViewById(R.id.ll_take_hands_suggest);
@@ -99,6 +130,7 @@ public class TakeHandsAdapter extends ArrayAdapter {
         if (allEntered()) {
             fab.setVisibility(View.VISIBLE);
             suggestions.setVisibility(View.INVISIBLE);
+            Utils.hideSoftKeyboard(context);
         }
         else {
             fab.setVisibility(View.INVISIBLE);

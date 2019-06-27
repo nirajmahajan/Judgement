@@ -20,7 +20,7 @@ public class TakeResultsAdapter extends ArrayAdapter {
     private int round;
     private int count = 0;
     FloatingActionButton fab;
-    ArrayList<String> names;
+    private final ArrayList<String> names;
 
     TakeResultsAdapter(Activity context, ArrayList<String> names, int round, FloatingActionButton fab) {
         super(context, R.layout.take_results_object, names);

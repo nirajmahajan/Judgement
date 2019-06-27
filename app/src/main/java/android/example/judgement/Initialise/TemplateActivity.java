@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.example.judgement.Information.About;
+import android.example.judgement.Information.help.HelpBase;
 import android.example.judgement.R;
 import android.example.judgement.Utils.Utils;
 import android.example.judgement.Utils.database.AppDatabase;
@@ -101,6 +102,10 @@ public class TemplateActivity extends AppCompatActivity {
         }
         else if (id == R.id.menu_exit) {
             Utils.quitApp(getApplicationContext(), this);
+        }
+        else if (id == R.id.menu_help) {
+            Intent intent = new Intent(this, HelpBase.class);
+            startActivity(intent);
         }
 
 

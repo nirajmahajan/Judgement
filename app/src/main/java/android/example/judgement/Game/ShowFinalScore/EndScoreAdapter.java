@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class EndScoreAdapter extends ArrayAdapter {
     private final Activity context;
-    ArrayList<ArrayList<String>> names;
+    private final ArrayList<ArrayList<String>> names;
 
     EndScoreAdapter(Activity context, ArrayList<ArrayList<String>> names) {
         super(context, R.layout.scoreboard_display_object, names);

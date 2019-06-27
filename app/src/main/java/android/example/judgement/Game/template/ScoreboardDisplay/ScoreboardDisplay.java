@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class ScoreboardDisplay extends AppCompatActivity {
 
         listView = findViewById(R.id.lv_sce_init_players);
         names = new ArrayList<>();
-
         if (AppDatabase.getAppDatabase(getApplicationContext()).dao().countPlayers() != 0) {
             List<Player> initPlayers = AppDatabase.getAppDatabase(getApplicationContext()).dao().getAllPlayers();
             Collections.sort(initPlayers, new Comparator<Player>() {

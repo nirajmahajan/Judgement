@@ -5,6 +5,8 @@ import android.content.Context;
 import android.example.judgement.Utils.database.AppDatabase;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.io.File;
 
@@ -48,5 +50,22 @@ public class Utils {
 
         }
         dir.delete();
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        View focusedView = activity.getCurrentFocus();
+        if(focusedView != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * Shows the soft keyboard
+     */
+    public static void showSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
     }
 }

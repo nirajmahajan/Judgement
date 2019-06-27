@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class InitAdapter extends ArrayAdapter {
     private final Activity context;
-    ArrayList<String> names;
+    private final ArrayList<String> names;
 
     InitAdapter(Activity context, ArrayList<String> names) {
         super(context, R.layout.init_ep_object, names);

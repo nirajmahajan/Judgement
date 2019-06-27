@@ -190,6 +190,19 @@ public class TakeResults extends GameTemplate {
         }
     }
 
+    @Override
+    protected void restartLevel() {
+        AppDatabase.setAllResultsToFalse(getApplicationContext());
+        AppDatabase.setAllPredictionsToReset(getApplicationContext());
+        Intent allow = new Intent(getApplicationContext(), TakeHands.class);
+        allow.putExtra("START_FROM_0", startFrom0);
+        allow.putExtra("ROUND_NUMBER", round);
+        allow.putExtra("MODE", mode);
+        allow.putExtra("STEP", step);
+        startActivity(allow);
+        finish();
+    }
+
     private void startAppropriateActivity () {
         int new_count = AppDatabase.getAllNames(getApplicationContext()).size();
         int new_round_limit = 52 / new_count;

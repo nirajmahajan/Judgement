@@ -8,6 +8,7 @@ import android.example.judgement.Game.template.ScoreboardDisplay.ScoreboardDispl
 import android.example.judgement.Game.template.ScoreboardEdit.ScoreBoardEdit;
 import android.example.judgement.Game.template.editPlayer.game_edit_player;
 import android.example.judgement.Information.About;
+import android.example.judgement.Information.help.HelpBase;
 import android.example.judgement.Initialise.Init_Players;
 import android.example.judgement.Initialise.MainActivity;
 import android.example.judgement.R;
@@ -31,6 +32,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class GameTemplate extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,6 +85,10 @@ public class GameTemplate extends AppCompatActivity
     }
     protected boolean useDrawer() {
         return true;
+    }
+
+    protected void restartLevel() {
+        Toast.makeText(getApplicationContext(), "Please Overload this function", Toast.LENGTH_LONG).show();
     }
 
     public void setToolbarTitle (String title) {
@@ -153,12 +159,16 @@ public class GameTemplate extends AppCompatActivity
                         public void onClick(DialogInterface dialog, int which) {}
                     })
                     .show();
-        }
-        else if (id == R.id.game_menu_exit) {
+        } else if (id == R.id.game_menu_exit) {
             Utils.quitApp(getApplicationContext(), this);
         } else if (id == R.id.game_menu_scorecard){
             Intent intent = new Intent(getApplicationContext(), ScoreboardDisplay.class);
             startActivity(intent);
+        } else if (id == R.id.menu_help) {
+            Intent intent = new Intent(this, HelpBase.class);
+            startActivity(intent);
+        } else if (id == R.id.game_menu_restartRound) {
+            restartLevel();
         }
 
 

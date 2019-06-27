@@ -9,15 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ScoreboardAdapter extends ArrayAdapter {
     private final Activity context;
-    ArrayList<ArrayList<String>> names;
+    private final ArrayList<ArrayList<String>> names;
 
     ScoreboardAdapter(Activity context, ArrayList<ArrayList<String>> names) {
-        super(context, R.layout.init_ep_object, names);
+        super(context, R.layout.scoreboard_display_object, names);
         this.names = names;
         this.context = context;
     }
@@ -32,6 +33,7 @@ public class ScoreboardAdapter extends ArrayAdapter {
 
         int curr_rank = position + 1;
         ArrayList<String> playersWithRank = names.get(position);
+//        tv_rank.append(String.valueOf(position));
         String toDisplay = "";
         if (playersWithRank.size() == 1){
             toDisplay += playersWithRank.get(0);
@@ -47,7 +49,7 @@ public class ScoreboardAdapter extends ArrayAdapter {
 
 
         Player player = AppDatabase.getAppDatabase(context).dao().findByName(playersWithRank.get(0));
-        tv_rank.setText(String.valueOf(curr_rank));
+//        tv_rank.setText(String.valueOf(curr_rank));
         tv_name.setText(toDisplay);
         tv_score.setText(String.valueOf(player.getScore()));
 

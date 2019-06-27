@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ScoreboardEditAdapter extends ArrayAdapter {
     private final Activity context;
-    ArrayList<String> names;
+    private final ArrayList<String> names;
 
     ScoreboardEditAdapter (Activity context, ArrayList<String> names) {
         super(context, R.layout.scoreboard_edit_object, names);

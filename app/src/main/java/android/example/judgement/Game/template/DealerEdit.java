@@ -7,6 +7,7 @@ import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.TemplateActivity;
 import android.example.judgement.R;
 import android.example.judgement.Utils.database.AppDatabase;
+import android.example.judgement.Utils.database.Player;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +43,10 @@ public class DealerEdit extends TemplateActivity {
         for (String name : names) {
             RadioButton rb = new RadioButton(this);
             rb.setText(name);
+            Player temp = AppDatabase.getAppDatabase(getApplicationContext()).dao().findByName(name);
+            if(temp.getDealer()) {
+                rb.setChecked(true);
+            }
             rb.setTextSize(40);
             rb.setId(i);
             rb.setOnClickListener(onClickRadio);
