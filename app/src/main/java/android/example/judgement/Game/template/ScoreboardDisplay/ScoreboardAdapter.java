@@ -32,7 +32,7 @@ public class ScoreboardAdapter extends ArrayAdapter {
         TextView tv_score = rowView.findViewById(R.id.tv_sce_object_score);
 
         int curr_rank = position + 1;
-        ArrayList<String> playersWithRank = names.get(position);
+        final ArrayList<String> playersWithRank = names.get(position);
 //        tv_rank.append(String.valueOf(position));
         String toDisplay = "";
         if (playersWithRank.size() == 1){
@@ -40,8 +40,8 @@ public class ScoreboardAdapter extends ArrayAdapter {
         }
         else{
             toDisplay += playersWithRank.get(0);
-            playersWithRank.remove(0);
-            for (String name : playersWithRank) {
+            for (int i = 1; i < playersWithRank.size(); i++) {
+                String name = playersWithRank.get(i);
                 toDisplay += "\n";
                 toDisplay += name;
             }
