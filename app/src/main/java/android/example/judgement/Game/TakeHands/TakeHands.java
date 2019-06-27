@@ -94,6 +94,7 @@ public class TakeHands extends GameTemplate {
             allow.putExtra("STEP", step);
             allow.putExtra("MODE", mode);
             startActivity(allow);
+            finish();
         }
         else {
             Toast.makeText(getApplicationContext(), "Please input all data before proceeding!", Toast.LENGTH_SHORT).show();
@@ -110,6 +111,7 @@ public class TakeHands extends GameTemplate {
             Toast.makeText(getApplicationContext(), new_count + " people cannot play the " + round + "th round!\n Exiting!", Toast.LENGTH_LONG).show();
             Intent exit = new Intent(getApplicationContext(), DisplayFinalScore.class);
             startActivity(exit);
+            finish();
         }
         else if (!startFrom0 && round > new_round_limit) {
             Toast.makeText(getApplicationContext(), new_count + " people cannot play the " + round + "th round!\nJumping Down to the " + String.valueOf(new_round_limit) + "th round!", Toast.LENGTH_LONG).show();
@@ -119,6 +121,7 @@ public class TakeHands extends GameTemplate {
             jumpDown.putExtra("MODE", mode);
             jumpDown.putExtra("STEP", step);
             startActivity(jumpDown);
+            finish();
         }
         else {
             names = new ArrayList<>();

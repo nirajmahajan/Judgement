@@ -209,11 +209,13 @@ public class TakeResults extends GameTemplate {
         if (next_round <= 0) {
             Intent end = new Intent(getApplicationContext(), DisplayFinalScore.class);
             startActivity(end);
+            finish();
         }
         else if (startFrom0 && new_round_limit < next_round) {
             Toast.makeText(getApplicationContext(), new_count + " people cannot play the " + next_round + "th round!\n Exiting!", Toast.LENGTH_LONG).show();
             Intent exit = new Intent(getApplicationContext(), DisplayFinalScore.class);
             startActivity(exit);
+            finish();
         }
         else if (!startFrom0 && next_round > new_round_limit) {
             Toast.makeText(getApplicationContext(), new_count + " people cannot play the " + next_round + "th round!\nJumping Down to the " + String.valueOf(new_round_limit) + "th round!", Toast.LENGTH_LONG).show();
@@ -223,6 +225,7 @@ public class TakeResults extends GameTemplate {
             jumpDown.putExtra("MODE", mode);
             jumpDown.putExtra("STEP", step + 1);
             startActivity(jumpDown);
+            finish();
         }
         else {
             Intent allow = new Intent(getApplicationContext(), TakeHands.class);
@@ -231,6 +234,7 @@ public class TakeResults extends GameTemplate {
             allow.putExtra("MODE", mode);
             allow.putExtra("STEP", step+1);
             startActivity(allow);
+            finish();
         }
     }
 

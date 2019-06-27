@@ -1,6 +1,7 @@
 package android.example.judgement.Information.help.activities;
 
 import android.example.judgement.Information.help.HelpTemplate;
+import android.example.judgement.R;
 import android.os.Bundle;
 
 public class viewingScorecard extends HelpTemplate {
@@ -21,12 +22,19 @@ public class viewingScorecard extends HelpTemplate {
 
     @Override
     protected int image() {
-        return super.image();
+        return R.drawable.scorecard;
     }
 
     @Override
+    protected int backgroundColor() {
+        return R.color.cyan;
+    }
+
+    String description = "You can view the scorecard anytime by clicking on the 'scorecard' icon on the toolbar, or in the navigation drawer, which can be toggled with the help of the hamburger icon";
+
+    @Override
     protected String description() {
-        return super.description();
+        return description;
     }
 
     @Override

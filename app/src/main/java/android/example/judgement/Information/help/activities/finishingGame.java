@@ -1,6 +1,7 @@
 package android.example.judgement.Information.help.activities;
 
 import android.example.judgement.Information.help.HelpTemplate;
+import android.example.judgement.R;
 import android.os.Bundle;
 
 public class finishingGame extends HelpTemplate {
@@ -22,12 +23,14 @@ public class finishingGame extends HelpTemplate {
 
     @Override
     protected int image() {
-        return super.image();
+        return R.drawable.hep_display_final;
     }
+
+    String description ="After all the rounds are finished, the app will display the final results.\n\nYou can verify the activity in each round by accessing the logs in the toolbar\n\nIf you want to play again, you can click on the 'Play Again' button, which will redirect you to the initial screen, without deleting the players.";
 
     @Override
     protected String description() {
-        return super.description();
+        return description;
     }
 
     @Override

@@ -3,9 +3,12 @@ package android.example.judgement.Game.ShowFinalScore;
 import android.content.Intent;
 import android.example.judgement.Information.About;
 import android.example.judgement.Initialise.Init_Players;
+import android.example.judgement.Initialise.MainActivity;
 import android.example.judgement.R;
 import android.example.judgement.Utils.database.AppDatabase;
 import android.example.judgement.Utils.database.Player;
+import android.example.judgement.Utils.log.UI.editScoreLog.ShowEditScoreLog;
+import android.example.judgement.Utils.log.UI.roundLog.ShowRoundLog;
 import android.example.judgement.Utils.log.Utils.Log;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,7 +58,7 @@ public class DisplayFinalScore extends AppCompatActivity {
             int prev_score = -1;
             for (Player player : initPlayers) {
                 if (player.getScore() == prev_score) {
-                    names.get(0).add(player.getName());
+                    names.get(names.size()-1).add(player.getName());
                 } else {
                     ArrayList<String> temp = new ArrayList<>();
                     temp.add(player.getName());
@@ -77,7 +80,7 @@ public class DisplayFinalScore extends AppCompatActivity {
         Log.clearEditLog();
         Log.clearRoundLog();
 
-        Intent intent = new Intent(getApplicationContext(), Init_Players.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -97,7 +100,7 @@ public class DisplayFinalScore extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.about_only, menu);
+        getMenuInflater().inflate(R.menu.about_logs, menu);
         return true;
     }
 
@@ -108,7 +111,14 @@ public class DisplayFinalScore extends AppCompatActivity {
         if (id == R.id.game_menu_about) {
             Intent intent = new Intent(getApplicationContext(), About.class);
             startActivity(intent);
+        } else if (id == R.id.game_menu_editScoreLog) {
+            Intent intent = new Intent(this, ShowEditScoreLog.class);
+            startActivity(intent);
+        } else if (id == R.id.game_menu_gameLog) {
+            Intent intent = new Intent(this, ShowRoundLog.class);
+            startActivity(intent);
         }
+
 
         return super.onOptionsItemSelected(item);
     }

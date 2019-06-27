@@ -47,7 +47,7 @@ public class ScoreboardDisplay extends AppCompatActivity {
             int prev_score = -1;
             for (Player player: initPlayers) {
                 if(player.getScore() == prev_score){
-                    names.get(0).add(player.getName());
+                    names.get(names.size()-1).add(player.getName());
                 }
                 else{
                     ArrayList<String> temp = new ArrayList<>();

@@ -32,6 +32,8 @@ public class About extends TemplateActivity {
         gmail = findViewById(R.id.mail);
         facebook = findViewById(R.id.facebook);
         github = findViewById(R.id.github);
+        facebook.setVisibility(View.INVISIBLE);
+        github.setVisibility(View.INVISIBLE);
     }
 
     public void goToFb (View view) {

@@ -43,6 +43,9 @@ public class HelpTemplate extends AppCompatActivity {
     private  void followUp()
     {
         DrawerLayout fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_help_template, null);
+        View parent = fullView.getRootView();
+        parent.setBackgroundColor(getResources().getColor(backgroundColor()));
+
         FrameLayout activityContainer = (FrameLayout) fullView.findViewById(R.id.help_template_activity_content);
         super.setContentView(fullView);
         prev = findViewById(R.id.help_prev);
@@ -120,6 +123,7 @@ public class HelpTemplate extends AppCompatActivity {
     protected int image() {return R.drawable.ic_launcher_foreground;}
     protected String pageTitle() {return "The title of this page is abcd";}
 
+    protected int backgroundColor(){return R.color.defaultBackground;};
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
