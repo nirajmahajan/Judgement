@@ -33,7 +33,6 @@ public class ScoreboardAdapter extends ArrayAdapter {
 
         int curr_rank = position + 1;
         final ArrayList<String> playersWithRank = names.get(position);
-//        tv_rank.append(String.valueOf(position));
         String toDisplay = "";
         if (playersWithRank.size() == 1){
             toDisplay += playersWithRank.get(0);
@@ -49,7 +48,7 @@ public class ScoreboardAdapter extends ArrayAdapter {
 
 
         Player player = AppDatabase.getAppDatabase(context).dao().findByName(playersWithRank.get(0));
-//        tv_rank.setText(String.valueOf(curr_rank));
+        tv_rank.setText(String.valueOf(curr_rank));
         tv_name.setText(toDisplay);
         tv_score.setText(String.valueOf(player.getScore()));
 
