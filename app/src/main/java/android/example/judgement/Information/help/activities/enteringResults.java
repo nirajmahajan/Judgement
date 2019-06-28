@@ -25,7 +25,7 @@ public class enteringResults extends HelpTemplate {
         return R.drawable.take_result;
     }
 
-    String description = "Enter the results of the round by selecting yes or no appropriately\n\nThe prediction of each player is displayed next to his/her name.\n\nSome basic checks have been implemented which aim at reducing the possibility of incorrect data being entered";
+    String description = "Enter the results of the round by selecting yes or no appropriately\n\nThe prediction of each player is displayed next to his/her name.\n\nSome basic checks have been implemented which aim at reducing the possibility of incorrect data being entered\n\n\n\n\n\n";
 
     @Override
     protected String description() {

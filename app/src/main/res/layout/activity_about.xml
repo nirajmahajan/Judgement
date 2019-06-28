@@ -33,7 +33,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textSize="20sp"
-        android:text="App Developed By Niraj Mahajan, IIT Bombay, CSE.\n\nFind me on:"
+        android:text="App Developed By Niraj Mahajan, IIT Bombay, CSE.\n\nContact me:"
         android:textColor="@color/FullBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

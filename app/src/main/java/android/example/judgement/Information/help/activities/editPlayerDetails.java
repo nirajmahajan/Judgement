@@ -25,7 +25,7 @@ public class editPlayerDetails extends HelpTemplate {
         return R.drawable.edit_player_details;
     }
 
-    String description = "You can edit add, delete, rename, or change the places of players, by clicking on 'edit Player Details' in the Navigation Drawer\n\nYou can click on the floating button on the bottom right corner to add new players\n\nYou can use the 'pen icon' or the 'bin icon' next to a player's name to rename or delete the player respectively\n\nThe app expects the names of the players to be in the same order as they are sitting, in order to rotate the role of the dealer.\nHence to maintain this, you can use the arrow buttons to the left of a player's name to change his/her position";
+    String description = "You can edit add, delete, rename, or change the places of players, by clicking on 'edit Player Details' in the Navigation Drawer\n\nYou can click on the floating button on the bottom right corner to add new players\n\nYou can use the 'pen icon' or the 'bin icon' next to a player's name to rename or delete the player respectively\n\nThe app expects the names of the players to be in the same order as they are sitting, in order to rotate the role of the dealer.\nHence to maintain this, you can use the arrow buttons to the left of a player's name to change his/her position\n\n\n\n\n\n";
 
     @Override
     protected String description() {

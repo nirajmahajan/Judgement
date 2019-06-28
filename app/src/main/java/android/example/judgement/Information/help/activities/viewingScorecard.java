@@ -30,7 +30,7 @@ public class viewingScorecard extends HelpTemplate {
         return R.color.cyan;
     }
 
-    String description = "You can view the scorecard anytime by clicking on the 'scorecard' icon on the toolbar, or in the navigation drawer, which can be toggled with the help of the hamburger icon";
+    String description = "You can view the scorecard anytime by clicking on the 'scorecard' icon on the toolbar, or in the navigation drawer, which can be toggled with the help of the hamburger icon\n\n\n\n\n\n";
 
     @Override
     protected String description() {

@@ -66,21 +66,10 @@ public class TakeHandsAdapter extends ArrayAdapter {
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
                     b_set.performClick();
+                    Utils.showSoftKeyboard(et_hands);
                     return true;
                 }
                 return false;
-            }
-        });
-        et_hands.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                et_hands.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(et_hands, InputMethodManager.SHOW_IMPLICIT);
-                    }
-                });
             }
         });
 

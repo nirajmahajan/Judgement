@@ -44,8 +44,8 @@
     <TextView
         android:id="@+id/tv_take_res_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:layout_height="50dp"
+        android:autoSizeTextType="uniform"
         android:textColor="@color/FullBlack"
         android:text="Distribute 3 cards"
         android:gravity="center"

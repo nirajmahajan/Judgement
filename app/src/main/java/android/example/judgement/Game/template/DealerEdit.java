@@ -45,6 +45,7 @@ public class DealerEdit extends TemplateActivity {
             rb.setText(name);
             Player temp = AppDatabase.getAppDatabase(getApplicationContext()).dao().findByName(name);
             if(temp.getDealer()) {
+                selectedRadio = rb;
                 rb.setChecked(true);
             }
             rb.setTextSize(40);

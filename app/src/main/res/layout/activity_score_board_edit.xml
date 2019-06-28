@@ -8,7 +8,7 @@
     android:background="@color/cyan"
     tools:context=".Game.template.ScoreboardEdit.ScoreBoardEdit">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/cl_sce_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,41 +20,37 @@
 
         <TextView
             android:id="@+id/tv_sce_head_rank"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
             android:textSize="30sp"
+            android:layout_marginLeft="10dp"
             android:text="Rank"
-            android:textColor="@color/FullBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:textColor="@color/FullBlack"/>
 
         <TextView
             android:id="@+id/tv_sce_head_name"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:text="Name"
+            android:autoSizeTextType="uniform"
+            android:textSize="30sp"
+            android:layout_weight="1"
             android:textColor="@color/FullBlack"
-            android:gravity="left"
-            app:layout_constraintStart_toEndOf="@id/tv_sce_head_rank"
-            app:layout_constraintEnd_toStartOf="@id/tv_sce_head_score"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            />
 
         <TextView
             android:id="@+id/tv_sce_head_score"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Score  "
+            android:gravity="right"
+            android:autoSizeTextType="uniform"
             android:textSize="30sp"
-            android:text="Score"
-            android:textColor="@color/FullBlack"
-            android:layout_marginRight="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
+            android:layout_weight="1"
+            android:textColor="@color/FullBlack"/>
+    </LinearLayout>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_sce_bar"

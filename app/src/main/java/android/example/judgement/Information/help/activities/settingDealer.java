@@ -25,7 +25,7 @@ public class settingDealer extends HelpTemplate {
         return R.drawable.choose_dealer;
     }
 
-    String description = "The game can start in two ways - either from the round where 1 card is distributed to each player, or from the round where the maximum cards are distributed.\nPlease note that this option, once chosen, cannot be altered.\n\nThen choose the initial dealer from the given list and press 'GO' whenever ready";
+    String description = "The game can start in two ways - either from the round where 1 card is distributed to each player, or from the round where the maximum cards are distributed.\nPlease note that this option, once chosen, cannot be altered.\n\nThen choose the initial dealer from the given list and press 'GO' whenever ready\n\n\n\n\n\n";
 
     @Override
     protected String description() {

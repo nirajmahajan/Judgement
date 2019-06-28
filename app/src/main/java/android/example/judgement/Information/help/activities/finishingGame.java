@@ -26,7 +26,7 @@ public class finishingGame extends HelpTemplate {
         return R.drawable.hep_display_final;
     }
 
-    String description ="After all the rounds are finished, the app will display the final results.\n\nYou can verify the activity in each round by accessing the logs in the toolbar\n\nIf you want to play again, you can click on the 'Play Again' button, which will redirect you to the initial screen, without deleting the players.";
+    String description ="After all the rounds are finished, the app will display the final results.\n\nYou can verify the activity in each round by accessing the logs in the toolbar\n\nIf you want to play again, you can click on the 'Play Again' button, which will redirect you to the initial screen, without deleting the players.\n\n\n\n\n\n";
 
     @Override
     protected String description() {

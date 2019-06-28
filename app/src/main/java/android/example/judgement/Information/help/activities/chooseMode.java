@@ -30,7 +30,7 @@ public class chooseMode extends HelpTemplate {
         return R.color.cyan;
     }
 
-    String description = "Select a mode from the given options.\nClick on 'Need Help' for further details\nCustom Trumps is the default selected mode";
+    String description = "Select a mode from the given options.\nClick on 'Need Help' for further details\nCustom Trumps is the default selected mode\n\n\n\n\n\n";
 
     @Override
     protected String description() {
